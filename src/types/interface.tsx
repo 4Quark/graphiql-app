@@ -1,13 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface IErrBoundProps {
-  children?: React.ReactNode;
-}
-
-export interface IErrBoundState {
-  hasError: boolean;
-}
-
 export interface IAppContext {
   isUser: boolean;
   login: () => void;
@@ -17,5 +9,11 @@ export interface IAppContext {
 }
 
 export interface IAppContextProviderProps {
+  children: ReactNode;
+}
+
+export interface IProtectedRouteProps {
+  user: boolean;
+  redirectPath: string;
   children: ReactNode;
 }

@@ -11,14 +11,16 @@ import { RootLayout } from './layouts/RootLayout';
 import { PageLayout } from './layouts/PageLayout';
 import NotFoundPage from './pages/NotFoundPage';
 import Main from './components/main/Main';
-import Auth from './components/auth/Auth';
 import AppContextProvider from './context/ContextProvider';
+import SingIn from './components/auth/SingIn';
+import SignUp from './components/auth/SignUp';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<PageLayout />} />
-      <Route path="/auth" element={<Auth />} />
+      <Route path="/signin" element={<SingIn />} />
+      <Route path="/signup" element={<SignUp />} />
       <Route path="/main" element={<Main />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>
