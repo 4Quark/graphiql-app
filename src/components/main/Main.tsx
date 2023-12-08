@@ -1,6 +1,12 @@
-import { Container } from '@mui/material';
+import { JSONViewer } from '../jsonViewer/JsonViewer';
+import QueryEditor from '../queryEditor/queryEditor';
 const Main = () => {
-  return <Container maxWidth="lg" />;
+  return (
+    <>
+      <QueryEditor />
+      <JSONViewer />
+    </>
+  );
 };
 
 export default Main;
