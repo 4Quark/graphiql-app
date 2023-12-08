@@ -1,5 +1,6 @@
+import { Container } from '@mui/material';
 const Main = () => {
-  return <div>Main</div>;
+  return <Container maxWidth="lg" />;
 };
 
 export default Main;
