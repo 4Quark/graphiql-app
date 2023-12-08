@@ -1,23 +1,50 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
 import { Button } from '@mui/material';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../auth/firebase';
 
 const SingIn = () => {
   const { login } = useContext(AppContext);
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    login();
-    navigate('/');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    console.log('here');
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((useCredential) => {
+        console.log('useCredential', useCredential);
+        login();
+        navigate('/');
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div>
-      <p>Here is SingIn Page.</p>
-      <Button onClick={handleLogin} variant="contained">
-        Fake Button to SingIn
-      </Button>
+      <form onSubmit={handleSignIn}>
+        <h1>Log in</h1>
+        <input
+          type="text"
+          placeholder="name"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button type="submit" variant="contained">
+          Log in
+        </Button>
+      </form>
     </div>
   );
 };
