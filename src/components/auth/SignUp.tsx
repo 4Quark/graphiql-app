@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
+import { Button } from '@mui/material';
 
 const SignUp = () => {
   const { login } = useContext(AppContext);
@@ -14,7 +15,10 @@ const SignUp = () => {
   return (
     <div>
       <p>Here is SingUP Page.</p>
-      <button onClick={handleLogin}>Fake Button to SingUP</button>
+
+      <Button onClick={handleLogin} variant="contained">
+        Fake Button to SingUP
+      </Button>
     </div>
   );
 };
