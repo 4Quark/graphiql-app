@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import LanguageToggler from '../langToggler/LangToggler';
 import { Grid } from '@mui/material';
-import AuthDetails from '../auth/AuthDetails';
+import AuthDetails from '../auth/assets/AuthDetails';
 
 const Header = () => {
   return (
