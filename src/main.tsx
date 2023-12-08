@@ -14,7 +14,6 @@ import Main from './components/main/Main';
 import AppContextProvider from './context/ContextProvider';
 import SingIn from './components/auth/SingIn';
 import SignUp from './components/auth/SignUp';
-import ErrorBoundary from './errorBoundary/ErrorBoundary';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,9 +30,7 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AppContextProvider>
-      <ErrorBoundary>
-        <RouterProvider router={router} />
-      </ErrorBoundary>
+      <RouterProvider router={router} />
     </AppContextProvider>
   </React.StrictMode>
 );

@@ -7,24 +7,36 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
 
     this.state = {
       hasError: false,
+      error: null,
     };
   }
 
-  static getDerivedStateFromError() {
-    return { hasError: true };
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, error };
   }
 
-  render(): React.ReactNode {
-    const { hasError } = this.state;
-    const { children } = this.props;
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('Uncaught error:', error, errorInfo);
+  }
 
-    if (hasError) {
+  render() {
+    if (this.state.hasError) {
       return (
-        <h1 className="text-red-500 text-center font-bold text-3xl">
-          Something went wrong, please try again
-        </h1>
+        <div className="error-boundary-ui">
+          <h1>Oops! Something went wrong.</h1>
+          <p>
+            We are having trouble displaying this part of the application. Please try refreshing the
+            page.
+          </p>
+          <details style={{ whiteSpace: 'pre-wrap' }}>
+            {this.state.error && this.state.error.toString()}
+            <br />
+            {this.state.errorInfo?.componentStack}
+          </details>
+        </div>
       );
     }
-    return children;
+
+    return this.props.children;
   }
 }

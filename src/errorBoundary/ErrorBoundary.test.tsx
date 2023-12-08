@@ -7,13 +7,13 @@ const ProblematicComponent = () => {
 };
 
 describe('<ErrorBoundary />', () => {
-  it('catches an error and displays a fallback UI', () => {
+  it('should catch an error and displays a fallback UI', () => {
     render(
       <ErrorBoundary>
         <ProblematicComponent />
       </ErrorBoundary>
     );
 
-    expect(screen.getByText(/Something went wrong, please try again/i)).toBeInTheDocument();
+    expect(screen.getByText(/Oops! Something went wrong./i)).toBeInTheDocument();
   });
 });
