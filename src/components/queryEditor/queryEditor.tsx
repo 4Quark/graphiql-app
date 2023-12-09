@@ -9,25 +9,55 @@ const QueryEditor: React.FC = () => {
     setQuery(event.target.value);
   };
 
-  const prettifyQuery = () => {
-    // Logic to prettify the GraphQL query will go here
+  const handlePrettifyClick = () => {
+    const prettyQuery = prettifyQuery(query);
+    setQuery(prettyQuery);
   };
 
-  // You can listen for keyboard shortcuts using useEffect and attaching event listeners to the window
+  const prettifyQuery = (query: string): string => {
+    let indentLevel = 0;
+    let formattedQuery = '';
+    const lines = query.split('\n');
+
+    for (const originalLine of lines) {
+      const trimmedLine = originalLine.trim();
+      let lineToAdd = trimmedLine;
+
+      if (trimmedLine.startsWith('}') && indentLevel > 0) {
+        indentLevel--;
+      }
+
+      lineToAdd = '  '.repeat(indentLevel) + lineToAdd;
+
+      if (/{$/.test(trimmedLine)) {
+        indentLevel++;
+      }
+
+      if (trimmedLine.includes('{') && trimmedLine.includes('}')) {
+        const matchesOpening = (trimmedLine.match(/{/g) || []).length;
+        const matchesClosing = (trimmedLine.match(/}/g) || []).length;
+        indentLevel += matchesOpening - matchesClosing;
+      }
+
+      formattedQuery += lineToAdd + '\n';
+    }
+
+    return formattedQuery.trim();
+  };
 
   return (
-    <Paper style={{ padding: '16px', minHeight: '200px', position: 'relative' }}>
+    <Paper style={{ padding: '16px', minHeight: 'false', position: 'relative' }}>
       <TextareaAutosize
-        minRows={10}
-        style={{ width: '100%', fontFamily: 'monospace', fontSize: '0.875rem' }}
+        minRows={32}
+        style={{ width: '100%', fontFamily: 'monospace', fontSize: '0.875rem', resize: 'none' }}
         placeholder="Type your GraphQL query here"
         value={query}
         onChange={handleQueryChange}
       />
       <Button
         variant="contained"
-        onClick={prettifyQuery}
-        style={{ position: 'absolute', right: '20px', bottom: '20px' }}
+        onClick={handlePrettifyClick}
+        style={{ position: 'absolute', right: '50px', bottom: '50px' }}
       >
         Prettify
       </Button>
