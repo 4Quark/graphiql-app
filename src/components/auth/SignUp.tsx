@@ -41,8 +41,8 @@ const SignUp = () => {
 
   const onSignUp: SubmitHandler<IForm> = (data) => {
     createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((useCredential) => {
-        console.log('created accout with ', useCredential);
+      .then((userCredential) => {
+        console.log('created accout with ', userCredential);
         login();
         navigate('/main');
       })

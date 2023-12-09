@@ -41,8 +41,8 @@ const SingIn = () => {
 
   const onSignIn: SubmitHandler<IForm> = (data) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((useCredential) => {
-        console.log('Log in as ', useCredential);
+      .then((userCredential) => {
+        console.log('Log in as ', userCredential);
         login();
         navigate('/main');
       })

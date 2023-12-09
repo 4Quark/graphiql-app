@@ -6,7 +6,7 @@ export const RootLayout = () => {
   return (
     <>
       <Header />
-      <div className="app">
+      <div className="min-h-screen flex flex-col justify-center items-center pt-10">
         <Outlet />
       </div>
       <Footer />
