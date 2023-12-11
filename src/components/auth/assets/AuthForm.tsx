@@ -37,7 +37,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
   };
 
   return (
-    <div>
+    <div className="my-5">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <Typography variant="h4" alignSelf="center">
           {title}

@@ -1,7 +1,7 @@
-import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
-import { Button, Grid, Typography } from '@mui/material';
+import { Alert, Button, Grid, Typography } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../auth/firebase';
 import { IForm } from '../../types/interface';
@@ -12,24 +12,30 @@ const SingIn = () => {
   const { login } = useContext(AppContext);
   const navigate = useNavigate();
 
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
   const onSignIn: SubmitHandler<IForm> = (data) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredential) => {
-        console.log('Log in as ', userCredential);
+      .then(() => {
+        setErrorMessage('');
         login();
         navigate('/main');
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setErrorMessage(err.message || 'An error occurred');
+        console.error(err);
+      });
   };
 
   return (
     <div>
       <AuthForm title="Log in" onSubmit={onSignIn} />
+      {errorMessage && <Alert severity="warning">{errorMessage}</Alert>}
 
       <Grid container className="text-center items-center py-10 gap-10">
         <Typography>Dont have an account yet?</Typography>
-        <Button variant="outlined">
-          <Link to="/signup">Create an account</Link>
+        <Button variant="outlined" href="/signup">
+          Create an account
         </Button>
       </Grid>
     </div>
