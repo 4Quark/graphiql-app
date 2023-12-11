@@ -3,12 +3,12 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { AppContext } from '../context/ContextProvider';
 
 export const ProtectedUserRoute = () => {
-  const { isUser } = useContext(AppContext);
+  const { user } = useContext(AppContext);
 
   return (
     <>
-      {!isUser && <Navigate to="/" />}
-      {isUser && <Outlet />}
+      {!user && <Navigate to="/" />}
+      {user && <Outlet />}
     </>
   );
 };

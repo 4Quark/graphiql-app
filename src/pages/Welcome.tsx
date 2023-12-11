@@ -3,13 +3,13 @@ import { AppContext } from '../context/ContextProvider';
 import { useContext } from 'react';
 
 const Welcome = () => {
-  const { isUser } = useContext(AppContext);
+  const { user } = useContext(AppContext);
 
   return (
     <div>
       <p>Welcome Page</p>
 
-      {isUser ? (
+      {user ? (
         <Link to="/main">You are user, you could go to main</Link>
       ) : (
         <>

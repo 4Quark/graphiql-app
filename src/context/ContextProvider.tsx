@@ -1,8 +1,10 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { IAppContext, IAppContextProviderProps } from '../types/interface';
+import { User, onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../auth/firebase';
 
 export const defaultValue: IAppContext = {
-  isUser: false,
+  user: null,
   login: () => {},
   logout: () => {},
   lang: 'eng',
@@ -12,14 +14,29 @@ export const defaultValue: IAppContext = {
 export const AppContext = createContext(defaultValue);
 
 const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) => {
-  const [isUser, setIsUser] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
-  const login = () => {
-    setIsUser(true);
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      console.log('user', user);
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => {
+      listen();
+    };
+  }, []);
+
+  const login = (user: User) => {
+    setUser(user);
   };
 
   const logout = () => {
-    setIsUser(false);
+    setUser(null);
   };
 
   const [lang, setLang] = useState('eng');
@@ -32,7 +49,7 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
   };
 
   const contextValue: IAppContext = {
-    isUser,
+    user,
     login,
     logout,
     lang,

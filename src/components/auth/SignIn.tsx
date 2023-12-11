@@ -16,9 +16,9 @@ const SignIn = () => {
 
   const onSignIn: SubmitHandler<IForm> = (data) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => {
+      .then((userCredentials) => {
         setErrorMessage('');
-        login();
+        login(userCredentials.user);
         navigate('/main');
       })
       .catch((err) => {
