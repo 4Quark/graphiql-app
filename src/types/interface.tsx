@@ -17,3 +17,8 @@ export interface IProtectedRouteProps {
   redirectPath: string;
   children: ReactNode;
 }
+
+export interface IForm {
+  email: string;
+  password: string;
+}

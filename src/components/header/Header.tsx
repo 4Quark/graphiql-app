@@ -1,26 +1,15 @@
-import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { AppContext } from '../../context/ContextProvider';
 import LanguageToggler from '../langToggler/LangToggler';
-import { Button, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
+import AuthDetails from '../auth/assets/AuthDetails';
 
 const Header = () => {
-  const { isUser, logout, lang } = useContext(AppContext);
-
   return (
     <header>
-      <Grid container className="items-center h-14 p-2 gap-24 bg-gray-200">
+      <Grid container className="items-center h-14 p-2 gap-14 bg-gray-200">
         <NavLink to="/">Welcome</NavLink>
         <LanguageToggler />
-
-        <Button onClick={logout} variant="outlined" disabled={isUser ? false : true}>
-          Log Out
-        </Button>
-
-        <p>
-          Current:
-          <span>{isUser ? '   auth' : '   guest'}</span> <span>{lang}</span>
-        </p>
+        <AuthDetails />
       </Grid>
     </header>
   );
