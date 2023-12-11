@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { SubmitHandler } from 'react-hook-form';
 
 export interface IAppContext {
   isUser: boolean;
@@ -21,4 +22,9 @@ export interface IProtectedRouteProps {
 export interface IForm {
   email: string;
   password: string;
+}
+
+export interface IAuthFormProps {
+  title: string;
+  onSubmit: SubmitHandler<IForm>;
 }
