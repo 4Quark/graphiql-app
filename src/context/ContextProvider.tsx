@@ -18,7 +18,6 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
-      console.log('user', user);
       if (user) {
         setUser(user);
       } else {
