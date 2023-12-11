@@ -8,7 +8,7 @@ import { IForm } from '../../types/interface';
 import { SubmitHandler } from 'react-hook-form';
 import AuthForm from './assets/AuthForm';
 
-const SingIn = () => {
+const SignIn = () => {
   const { login } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -42,4 +42,4 @@ const SingIn = () => {
   );
 };
 
-export default SingIn;
+export default SignIn;

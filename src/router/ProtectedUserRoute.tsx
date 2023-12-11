@@ -7,8 +7,8 @@ export const ProtectedUserRoute = () => {
 
   return (
     <>
-      {isUser && <Navigate to="/main" />}
-      {!isUser && <Outlet />}
+      {!isUser && <Navigate to="/" />}
+      {isUser && <Outlet />}
     </>
   );
 };
