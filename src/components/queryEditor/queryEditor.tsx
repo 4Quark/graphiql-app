@@ -33,22 +33,25 @@ const QueryEditor: React.FC = () => {
 
       if (trimmedLine === '') continue;
 
-      let lineToAdd = trimmedLine;
-
-      if (trimmedLine.startsWith('}') && indentLevel > 0) {
-        indentLevel--;
+      if (trimmedLine.startsWith('}')) {
+        indentLevel = Math.max(indentLevel - 1, 0);
       }
 
-      lineToAdd = '  '.repeat(indentLevel) + lineToAdd;
+      let lineToAdd = '  '.repeat(indentLevel) + trimmedLine;
 
-      if (/{$/.test(trimmedLine)) {
+      if (trimmedLine.endsWith('{')) {
         indentLevel++;
       }
 
-      if (trimmedLine.includes('{') && trimmedLine.includes('}')) {
-        const matchesOpening = (trimmedLine.match(/{/g) || []).length;
-        const matchesClosing = (trimmedLine.match(/}/g) || []).length;
-        indentLevel += matchesOpening - matchesClosing;
+      const openingBraces = (trimmedLine.match(/{/g) || []).length;
+      const closingBraces = (trimmedLine.match(/}/g) || []).length;
+      if (openingBraces && closingBraces) {
+        if (openingBraces > closingBraces) {
+          indentLevel += openingBraces - closingBraces;
+        } else if (closingBraces > openingBraces) {
+          lineToAdd =
+            '  '.repeat(Math.max(indentLevel - (closingBraces - openingBraces), 0)) + trimmedLine;
+        }
       }
 
       formattedQuery += lineToAdd + '\n';
