@@ -5,7 +5,10 @@ import { graphql } from 'cm6-graphql';
 import { syntaxHighlighting } from '@codemirror/language';
 import { oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
 import { autocompletion } from '@codemirror/autocomplete';
+import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
+import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
+import Stack from '@mui/material/Stack';
 
 const QueryEditor: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -51,16 +54,30 @@ const QueryEditor: React.FC = () => {
 
   return (
     <Paper>
-      <div>
-        <Button
-          variant="contained"
-          onClick={handlePrettifyClick}
-          startIcon={<AutoFixHighOutlinedIcon />}
-        >
-          Fix
-        </Button>
+      <div className="bg-zinc-700">
+        <Stack direction="row" spacing={2}>
+          <Button
+            color="secondary"
+            size="small"
+            variant="outlined"
+            startIcon={<PlayCircleOutlineOutlinedIcon />}
+          >
+            Run Query
+          </Button>
+          <Button
+            color="secondary"
+            size="small"
+            variant="outlined"
+            onClick={handlePrettifyClick}
+            startIcon={<AutoFixHighOutlinedIcon />}
+          >
+            Prettify
+          </Button>
+        </Stack>
       </div>
       <CodeMirror
+        height="400px"
+        theme={okaidia}
         extensions={[graphql(), syntaxHighlighting(oneDarkHighlightStyle), autocompletion()]}
         placeholder="Type your GraphQL query here"
         value={query}
