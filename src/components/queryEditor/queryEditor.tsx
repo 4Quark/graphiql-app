@@ -11,7 +11,12 @@ import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutline
 import Stack from '@mui/material/Stack';
 
 const QueryEditor: React.FC = () => {
-  const [query, setQuery] = useState('');
+  const initialText: string = `# Welcome to GraphiQL
+  #
+  # GraphiQL is an in-browser tool for writing, validating, and
+  # testing GraphQL queries.
+  `;
+  const [query, setQuery] = useState(initialText);
 
   const handlePrettifyClick = () => {
     const prettyQuery = prettifyQuery(query);
@@ -76,7 +81,7 @@ const QueryEditor: React.FC = () => {
         </Stack>
       </div>
       <CodeMirror
-        height="400px"
+        height="600px"
         theme={okaidia}
         extensions={[graphql(), syntaxHighlighting(oneDarkHighlightStyle), autocompletion()]}
         placeholder="Type your GraphQL query here"

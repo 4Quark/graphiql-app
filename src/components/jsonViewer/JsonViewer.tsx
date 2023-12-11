@@ -1,22 +1,18 @@
-import { Paper, TextareaAutosize } from '@mui/material';
+import { Paper } from '@mui/material';
+import CodeMirror from '@uiw/react-codemirror';
+import { EditorView } from '@codemirror/view';
+import { json } from '@codemirror/lang-json';
+import { okaidia } from '@uiw/codemirror-theme-okaidia';
 
 export const JSONViewer: React.FC = () => {
   return (
-    <Paper
-      style={{ padding: '16px', minHeight: 'false', backgroundColor: '#1e1e1e', color: 'white' }}
-    >
-      <TextareaAutosize
-        minRows={32}
-        style={{
-          width: '100%',
-          fontFamily: 'monospace',
-          fontSize: '0.875rem',
-          backgroundColor: '#1e1e1e',
-          color: 'white',
-          resize: 'none',
-        }}
-        value={JSON.stringify({})}
-        readOnly
+    <Paper>
+      <div className="bg-zinc-700 text-purple-500 p-1">JSON Viewer</div>
+      <CodeMirror
+        height="600px"
+        theme={okaidia}
+        extensions={[json(), EditorView.editable.of(false)]}
+        value="{}"
       />
     </Paper>
   );
