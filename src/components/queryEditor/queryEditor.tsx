@@ -1,13 +1,14 @@
-import { TextareaAutosize } from '@mui/base';
 import { Paper, Button } from '@mui/material';
 import { useState } from 'react';
+import CodeMirror from '@uiw/react-codemirror';
+import { graphql } from 'cm6-graphql';
+import { syntaxHighlighting } from '@codemirror/language';
+import { oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
+import { autocompletion } from '@codemirror/autocomplete';
+import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 
 const QueryEditor: React.FC = () => {
   const [query, setQuery] = useState('');
-
-  const handleQueryChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setQuery(event.target.value);
-  };
 
   const handlePrettifyClick = () => {
     const prettyQuery = prettifyQuery(query);
@@ -21,6 +22,9 @@ const QueryEditor: React.FC = () => {
 
     for (const originalLine of lines) {
       const trimmedLine = originalLine.trim();
+
+      if (trimmedLine === '') continue;
+
       let lineToAdd = trimmedLine;
 
       if (trimmedLine.startsWith('}') && indentLevel > 0) {
@@ -46,21 +50,22 @@ const QueryEditor: React.FC = () => {
   };
 
   return (
-    <Paper style={{ padding: '16px', minHeight: 'false', position: 'relative' }}>
-      <TextareaAutosize
-        minRows={32}
-        style={{ width: '100%', fontFamily: 'monospace', fontSize: '0.875rem', resize: 'none' }}
+    <Paper>
+      <div>
+        <Button
+          variant="contained"
+          onClick={handlePrettifyClick}
+          startIcon={<AutoFixHighOutlinedIcon />}
+        >
+          Fix
+        </Button>
+      </div>
+      <CodeMirror
+        extensions={[graphql(), syntaxHighlighting(oneDarkHighlightStyle), autocompletion()]}
         placeholder="Type your GraphQL query here"
         value={query}
-        onChange={handleQueryChange}
+        onChange={(value) => setQuery(value)}
       />
-      <Button
-        variant="contained"
-        onClick={handlePrettifyClick}
-        style={{ position: 'absolute', right: '50px', bottom: '50px' }}
-      >
-        Prettify
-      </Button>
     </Paper>
   );
 };
