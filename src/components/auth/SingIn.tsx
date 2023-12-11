@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
 import { Alert, Button, Grid, Typography } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -34,8 +34,8 @@ const SingIn = () => {
 
       <Grid container className="text-center items-center py-10 gap-10">
         <Typography>Dont have an account yet?</Typography>
-        <Button variant="outlined" href="/signup">
-          Create an account
+        <Button variant="outlined">
+          <Link to="/signup"> Create an account</Link>
         </Button>
       </Grid>
     </div>
