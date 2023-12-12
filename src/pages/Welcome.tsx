@@ -1,15 +1,24 @@
 import { Link } from 'react-router-dom';
 import { AppContext } from '../context/ContextProvider';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 const Welcome = () => {
-  const { isUser } = useContext(AppContext);
+  const { user } = useContext(AppContext);
+  const [token, setToken] = useState<string | undefined>('');
+
+  useEffect(() => {
+    const validToken = async () => {
+      setToken(await user?.getIdToken(false));
+    };
+
+    validToken().catch(console.error);
+  }, [user]);
 
   return (
     <div>
       <p>Welcome Page</p>
 
-      {isUser ? (
+      {user != null && token ? (
         <Link to="/main">You are user, you could go to main</Link>
       ) : (
         <>

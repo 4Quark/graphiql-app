@@ -2,44 +2,44 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
 import { Alert, Button, Grid, Typography } from '@mui/material';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../auth/firebase';
 import { IForm } from '../../types/interface';
-import AuthForm from './assets/AuthForm';
 import { SubmitHandler } from 'react-hook-form';
+import AuthForm from './assets/AuthForm';
 
-const SignUp = () => {
+const SignIn = () => {
   const { login } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const onSignUp: SubmitHandler<IForm> = (data) => {
-    createUserWithEmailAndPassword(auth, data.email, data.password)
+  const onSignIn: SubmitHandler<IForm> = (data) => {
+    signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredentials) => {
         setErrorMessage('');
         login(userCredentials.user);
         navigate('/main');
       })
       .catch((err) => {
-        console.error(err);
         setErrorMessage(err.message || 'An error occurred');
+        console.error(err);
       });
   };
 
   return (
     <div>
-      <AuthForm title="Create Account" onSubmit={onSignUp} />
+      <AuthForm title="Log in" onSubmit={onSignIn} />
       {errorMessage && <Alert severity="warning">{errorMessage}</Alert>}
 
       <Grid container className="text-center items-center py-10 gap-10">
-        <Typography>Already have an account?</Typography>
+        <Typography>Dont have an account yet?</Typography>
         <Button variant="outlined">
-          <Link to="/signin"> Log in to your account</Link>
+          <Link to="/signup"> Create an account</Link>
         </Button>
       </Grid>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;
