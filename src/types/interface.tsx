@@ -2,6 +2,11 @@ import { User } from 'firebase/auth';
 import { ReactNode } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 
+export interface ToggleVisibilityProps {
+  visible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export interface IAppContext {
   user: User | null;
   login: (user: User) => void;

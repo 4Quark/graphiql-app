@@ -1,5 +1,6 @@
 import React from 'react';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary.types';
+import { Typography } from '@mui/material';
 
 export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
@@ -22,12 +23,19 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
   render() {
     if (this.state.hasError) {
       return (
-        <div className="error-boundary-ui">
-          <h1>Oops! Something went wrong.</h1>
-          <p>
-            We are having trouble displaying this part of the application. Please try refreshing the
-            page.
-          </p>
+        <div className="min-h-screen flex flex-col justify-center items-center pt-10">
+          <Typography variant="h3" gutterBottom>
+            Oops! Something went wrong.
+          </Typography>
+
+          <Typography variant="subtitle1" gutterBottom>
+            We are having trouble displaying this part of the application.
+          </Typography>
+
+          <Typography variant="subtitle1" gutterBottom>
+            Please try refreshing the page.
+          </Typography>
+
           <details style={{ whiteSpace: 'pre-wrap' }}>
             {this.state.error && this.state.error.toString()}
             <br />
