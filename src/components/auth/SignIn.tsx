@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
 import { Alert, Button, Grid, Typography } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -8,7 +8,7 @@ import { IForm } from '../../types/interface';
 import { SubmitHandler } from 'react-hook-form';
 import AuthForm from './assets/AuthForm';
 
-const SingIn = () => {
+const SignIn = () => {
   const { login } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -16,9 +16,9 @@ const SingIn = () => {
 
   const onSignIn: SubmitHandler<IForm> = (data) => {
     signInWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => {
+      .then((userCredentials) => {
         setErrorMessage('');
-        login();
+        login(userCredentials.user);
         navigate('/main');
       })
       .catch((err) => {
@@ -34,12 +34,12 @@ const SingIn = () => {
 
       <Grid container className="text-center items-center py-10 gap-10">
         <Typography>Dont have an account yet?</Typography>
-        <Button variant="outlined" href="/signup">
-          Create an account
+        <Button variant="outlined">
+          <Link to="/signup"> Create an account</Link>
         </Button>
       </Grid>
     </div>
   );
 };
 
-export default SingIn;
+export default SignIn;

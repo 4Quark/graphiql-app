@@ -1,9 +1,10 @@
+import { User } from 'firebase/auth';
 import { ReactNode } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 
 export interface IAppContext {
-  isUser: boolean;
-  login: () => void;
+  user: User | null;
+  login: (user: User) => void;
   logout: () => void;
   lang: string;
   toggleLang: () => void;
