@@ -6,11 +6,11 @@ import { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
 
 const Header = () => {
-  const { typography } = useContext(AppContext);
+  const { strings } = useContext(AppContext);
   return (
     <header>
       <Grid container className="items-center h-14 p-2 gap-14 bg-gray-200">
-        <NavLink to="/">{typography.nav_welcome}</NavLink>
+        <NavLink to="/">{strings.nav_welcome}</NavLink>
         <LanguageToggler />
         <AuthDetails />
       </Grid>

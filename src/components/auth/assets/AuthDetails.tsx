@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AuthDetails = () => {
   const navigate = useNavigate();
-  const { user, logout, typography } = useContext(AppContext);
+  const { user, logout, strings } = useContext(AppContext);
 
   useEffect(() => {
     if (user == null) {
@@ -35,7 +35,7 @@ const AuthDetails = () => {
       <span>{user ? <span>{user.email}</span> : ''}</span>
 
       <Button onClick={userSignOut} variant="outlined" disabled={user?.email ? false : true}>
-        {typography.button_logout}
+        {strings.button_logout}
       </Button>
     </>
   );

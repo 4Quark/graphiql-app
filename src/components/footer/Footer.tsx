@@ -4,9 +4,10 @@ import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
+import { LANG } from '../../localization/strings';
 
 const DevList = [
-  { nameEN: 'Maria Samoilova', nameRU: 'Maria Samoilova', github: 'https://github.com/4Quark' },
+  { nameEN: 'Maria Samoilova', nameRU: 'Мария Самойлова', github: 'https://github.com/4Quark' },
   { nameEN: 'Anton Gulko', nameRU: 'Антон Гулько', github: 'https://github.com/johngaalt' },
   { nameEN: 'Iryna Zhebryk', nameRU: 'Ирина Жебрик', github: 'https://github.com/iradzh' },
 ];
@@ -37,7 +38,7 @@ const Footer = () => {
               >
                 <img alt="github logo" src={ghlogo} className="h-4 px-2" />
                 <Typography variant="subtitle1">
-                  {lang === 'EN' ? person.nameEN : person.nameRU}
+                  {lang === LANG.EN ? person.nameEN : person.nameRU}
                 </Typography>
               </Link>
             ))}

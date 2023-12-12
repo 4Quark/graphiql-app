@@ -7,7 +7,7 @@ export interface IAppContext {
   login: (user: User) => void;
   logout: () => void;
   lang: string;
-  typography: ITypography;
+  strings: IStrings;
   toggleLang: () => void;
 }
 
@@ -31,7 +31,7 @@ export interface IAuthFormProps {
   onSubmit: SubmitHandler<IForm>;
 }
 
-export interface ITypography {
+export interface IStrings {
   nav_welcome: string;
   nav_lang_ru: string;
   nav_lang_eng: string;

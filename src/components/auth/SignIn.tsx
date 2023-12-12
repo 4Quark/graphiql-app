@@ -9,7 +9,7 @@ import { SubmitHandler } from 'react-hook-form';
 import AuthForm from './assets/AuthForm';
 
 const SignIn = () => {
-  const { login, typography } = useContext(AppContext);
+  const { login, strings } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -29,13 +29,13 @@ const SignIn = () => {
 
   return (
     <div>
-      <AuthForm title={typography.button_signin} onSubmit={onSignIn} />
+      <AuthForm title={strings.button_signin} onSubmit={onSignIn} />
       {errorMessage && <Alert severity="warning">{errorMessage}</Alert>}
 
       <Grid container className="text-center items-center py-10 gap-10">
-        <Typography>{typography.auth_guest_question}</Typography>
+        <Typography>{strings.auth_guest_question}</Typography>
         <Button variant="outlined" onClick={() => navigate('/signup')}>
-          {typography.button_signup}
+          {strings.button_signup}
         </Button>
       </Grid>
     </div>

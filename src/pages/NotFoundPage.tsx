@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '../context/ContextProvider';
 
 const NotFoundPage = () => {
-  const { typography } = useContext(AppContext);
+  const { strings } = useContext(AppContext);
 
   return (
     <div>
-      <h2>{typography.NotFound_title}</h2>
+      <h2>{strings.NotFound_title}</h2>
       <p>
-        {typography.NotFound_content} <Link to="/"> {typography.NotFound__link_to_main}</Link>
+        {strings.NotFound_content} <Link to="/"> {strings.NotFound__link_to_main}</Link>
       </p>
     </div>
   );

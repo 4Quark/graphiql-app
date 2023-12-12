@@ -5,13 +5,14 @@ import { TogglePasswordVisibility } from './TogglePasswordVisibility';
 import { IAuthFormProps, IForm } from '../../../types/interface';
 import { Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './schema';
+import { schemaEN, schemaRU } from './schema';
 import { AppContext } from '../../../context/ContextProvider';
+import { LANG } from '../../../localization/strings';
 
 const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
-  const { typography } = useContext(AppContext);
+  const { lang, strings } = useContext(AppContext);
 
-  const resolver: Resolver<IForm> = yupResolver(schema);
+  const resolver: Resolver<IForm> = yupResolver(lang === LANG.EN ? schemaEN : schemaRU);
 
   const {
     handleSubmit,
@@ -52,7 +53,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           render={({ field }) => (
             <TextField
               id={`${title.toLowerCase()}Email`}
-              label={typography.email}
+              label={strings.email}
               onChange={(e) => {
                 field.onChange(e);
                 onChangeInput('email', e.target.value);
@@ -72,7 +73,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           render={({ field }) => (
             <TextField
               id={`${title.toLowerCase()}Password`}
-              label={typography.password}
+              label={strings.password}
               onChange={(e) => {
                 field.onChange(e);
                 onChangeInput('password', e.target.value);
