@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm, Resolver } from 'react-hook-form';
 import { Button, TextField, Typography } from '@mui/material';
 import { TogglePasswordVisibility } from './TogglePasswordVisibility';
@@ -6,8 +6,11 @@ import { IAuthFormProps, IForm } from '../../../types/interface';
 import { Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './schema';
+import { AppContext } from '../../../context/ContextProvider';
 
 const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
+  const { typography } = useContext(AppContext);
+
   const resolver: Resolver<IForm> = yupResolver(schema);
 
   const {
@@ -49,7 +52,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           render={({ field }) => (
             <TextField
               id={`${title.toLowerCase()}Email`}
-              label="Email"
+              label={typography.email}
               onChange={(e) => {
                 field.onChange(e);
                 onChangeInput('email', e.target.value);
@@ -69,7 +72,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           render={({ field }) => (
             <TextField
               id={`${title.toLowerCase()}Password`}
-              label="Password"
+              label={typography.password}
               onChange={(e) => {
                 field.onChange(e);
                 onChangeInput('password', e.target.value);

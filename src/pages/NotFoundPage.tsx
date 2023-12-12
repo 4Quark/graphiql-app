@@ -1,11 +1,15 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../context/ContextProvider';
 
 const NotFoundPage = () => {
+  const { typography } = useContext(AppContext);
+
   return (
     <div>
-      <h2>Sorry, the page you are looking for does not exist.</h2>
+      <h2>{typography.NotFound_title}</h2>
       <p>
-        Please check the URL or go back <Link to="/">Welcome page</Link>
+        {typography.NotFound_content} <Link to="/"> {typography.NotFound__link_to_main}</Link>
       </p>
     </div>
   );

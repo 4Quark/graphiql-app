@@ -1,5 +1,10 @@
+import { useContext } from 'react';
+import { AppContext } from '../../context/ContextProvider';
+
 const Main = () => {
-  return <div>Main</div>;
+  const { typography } = useContext(AppContext);
+
+  return <div>{typography.main}</div>;
 };
 
 export default Main;

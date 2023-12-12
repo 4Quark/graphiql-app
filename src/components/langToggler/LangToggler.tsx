@@ -48,14 +48,14 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function LanguageToggler() {
-  const { toggleLang } = useContext(AppContext);
+  const { toggleLang, typography } = useContext(AppContext);
 
   return (
     <FormGroup onChange={toggleLang}>
       <Stack direction="row" spacing={1} alignItems="center">
-        <Typography>English</Typography>
+        <Typography>{typography.nav_lang_eng}</Typography>
         <AntSwitch inputProps={{ 'aria-label': 'ant design' }} />
-        <Typography>Russian</Typography>
+        <Typography>{typography.nav_lang_ru}</Typography>
       </Stack>
     </FormGroup>
   );

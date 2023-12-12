@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
 import { Alert, Button, Grid, Typography } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -9,7 +9,7 @@ import { SubmitHandler } from 'react-hook-form';
 import AuthForm from './assets/AuthForm';
 
 const SignIn = () => {
-  const { login } = useContext(AppContext);
+  const { login, typography } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -29,13 +29,13 @@ const SignIn = () => {
 
   return (
     <div>
-      <AuthForm title="Log in" onSubmit={onSignIn} />
+      <AuthForm title={typography.button_signin} onSubmit={onSignIn} />
       {errorMessage && <Alert severity="warning">{errorMessage}</Alert>}
 
       <Grid container className="text-center items-center py-10 gap-10">
-        <Typography>Dont have an account yet?</Typography>
-        <Button variant="outlined">
-          <Link to="/signup"> Create an account</Link>
+        <Typography>{typography.auth_guest_question}</Typography>
+        <Button variant="outlined" onClick={() => navigate('/signup')}>
+          {typography.button_signup}
         </Button>
       </Grid>
     </div>

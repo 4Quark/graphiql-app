@@ -3,7 +3,7 @@ import { AppContext } from '../context/ContextProvider';
 import { useContext, useEffect, useState } from 'react';
 
 const Welcome = () => {
-  const { user } = useContext(AppContext);
+  const { user, typography } = useContext(AppContext);
   const [token, setToken] = useState<string | undefined>('');
 
   useEffect(() => {
@@ -16,16 +16,13 @@ const Welcome = () => {
 
   return (
     <div>
-      <p>Welcome Page</p>
-
       {user != null && token ? (
-        <Link to="/main">You are user, you could go to main</Link>
+        <Link to="/main">{typography.link_to_main}</Link>
       ) : (
         <>
-          <p>You are not a user, create an acc</p>
-          <Link to="/signin">Sign In</Link>
+          <Link to="/signin">{typography.button_signin}</Link>
           <br />
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/signup">{typography.button_signup}</Link>
         </>
       )}
       <hr />
