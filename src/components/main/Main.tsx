@@ -1,6 +1,6 @@
 import { Container, Grid } from '@mui/material';
 import { JSONViewer } from '../jsonViewer/JsonViewer';
-import QueryEditor from '../queryEditor/queryEditor';
+import QueryEditor from '../queryEditor/QueryEditor';
 const Main = () => {
   return (
     <Container maxWidth={false} style={{ marginTop: '1rem' }}>

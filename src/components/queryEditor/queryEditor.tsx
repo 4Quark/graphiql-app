@@ -9,7 +9,7 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
 import Stack from '@mui/material/Stack';
-import { prettifyQuery } from './queryEditor.utils';
+import { prettifyQuery } from './QueryEditor.utils';
 
 const QueryEditor: React.FC = () => {
   const initialText: string = `# Welcome to GraphiQL
