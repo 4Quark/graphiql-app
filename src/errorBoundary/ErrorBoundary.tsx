@@ -1,5 +1,6 @@
 import React from 'react';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary.types';
+import { Button } from '@mui/material';
 
 export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
@@ -28,6 +29,15 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
             We are having trouble displaying this part of the application. Please try refreshing the
             page.
           </p>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            Refresh
+          </Button>
           <details style={{ whiteSpace: 'pre-wrap' }}>
             {this.state.error && this.state.error.toString()}
             <br />
