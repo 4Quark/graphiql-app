@@ -7,7 +7,7 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 export const JSONViewer: React.FC = () => {
   return (
     <Paper>
-      <div className="bg-zinc-700 text-purple-500 p-1">JSON Viewer</div>
+      <div className="bg-zinc-700 text-blue-400 p-1">JSON Viewer</div>
       <CodeMirror
         height="600px"
         theme={okaidia}
