@@ -3,11 +3,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import PropTypes from 'prop-types';
-
-export interface ToggleVisibilityProps {
-  visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { ToggleVisibilityProps } from '../../../types/interface';
 
 export const TogglePasswordVisibility: React.FC<ToggleVisibilityProps> = ({
   visible,
