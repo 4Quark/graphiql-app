@@ -3,10 +3,11 @@ import LanguageToggler from '../langToggler/LangToggler';
 import { Grid } from '@mui/material';
 import AuthDetails from '../auth/assets/AuthDetails';
 import { useContext, useEffect, useState } from 'react';
+import { useLanguage } from '../../localization/useLanguage';
 import { AppContext } from '../../context/ContextProvider';
 
 const Header = () => {
-  const { strings } = useContext(AppContext);
+  const { lang } = useContext(AppContext);
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -33,7 +34,7 @@ const Header = () => {
       }`}
     >
       <Grid container className="items-center px-10 h-14 p-2 gap-10">
-        <NavLink to="/">{strings.nav_welcome}</NavLink>
+        <NavLink to="/">{useLanguage('nav_welcome', lang)}</NavLink>
         <LanguageToggler />
         <AuthDetails />
       </Grid>

@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import LinkAsButton from '../components/LinkAsButton/LinkAsButton';
 import { AppContext } from '../context/ContextProvider';
-import { useContext, useEffect, useState } from 'react';
 
 const Welcome = () => {
-  const { user, strings } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   const [token, setToken] = useState<string | undefined>('');
 
   useEffect(() => {
@@ -13,23 +13,20 @@ const Welcome = () => {
 
     validToken().catch(console.error);
   }, [user]);
-
   return (
-    <div>
+    <>
       {user != null && token ? (
-        <Link to="/main">{strings.link_to_main}</Link>
+        <LinkAsButton title="link_to_main" link="/main" />
       ) : (
-        <>
-          <Link to="/signin">{strings.button_signin}</Link>
-          <br />
-          <Link to="/signup">{strings.button_signup}</Link>
-        </>
+        <div className="flex items-center px-10 h-14 p-2 gap-5">
+          <LinkAsButton title="button_signin" link="/signin" />
+          <LinkAsButton title="button_signup" link="/signup" />
+        </div>
       )}
-      <hr />
       <div>
         <h3>General information about project course and developers HERE</h3>
       </div>
-    </div>
+    </>
   );
 };
 

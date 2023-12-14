@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 import { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
 import { Typography } from '@mui/material';
-import { useLanguage } from '../../localization/strings';
+import { useLanguage } from '../../localization/useLanguage';
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 28,

@@ -1,13 +1,14 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
-import { Alert, Button, Grid, Typography } from '@mui/material';
+import { Alert, Grid, Typography } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../auth/firebase';
 import { IForm } from '../../types/interface';
 import { SubmitHandler } from 'react-hook-form';
 import AuthForm from './assets/AuthForm';
-import { useLanguage } from '../../localization/strings';
+import { useLanguage } from '../../localization/useLanguage';
+import LinkAsButton from '../LinkAsButton/LinkAsButton';
 
 const SignIn = () => {
   const { login, lang } = useContext(AppContext);
@@ -35,9 +36,7 @@ const SignIn = () => {
 
       <Grid container className="text-center items-center py-10 gap-10">
         <Typography>{useLanguage('auth_guest_question', lang)}</Typography>
-        <Button variant="outlined" onClick={() => navigate('/signup')}>
-          {useLanguage('button_signup', lang)}
-        </Button>
+        <LinkAsButton title="button_signup" link="/signup" />
       </Grid>
     </div>
   );

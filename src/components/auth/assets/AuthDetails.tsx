@@ -4,7 +4,7 @@ import { auth } from '../../../auth/firebase';
 import { Button } from '@mui/material';
 import { AppContext } from '../../../context/ContextProvider';
 import { useNavigate } from 'react-router-dom';
-import { useLanguage } from '../../../localization/strings';
+import { useLanguage } from '../../../localization/useLanguage';
 
 const AuthDetails = () => {
   const navigate = useNavigate();

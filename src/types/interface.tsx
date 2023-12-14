@@ -19,7 +19,6 @@ export interface IAppContext {
   login: (user: User) => void;
   logout: () => void;
   lang: LangType;
-  strings: IStrings;
   toggleLang: () => void;
 }
 
@@ -41,30 +40,6 @@ export interface IForm {
 export interface IAuthFormProps {
   title: string;
   onSubmit: SubmitHandler<IForm>;
-}
-
-export interface IStrings {
-  nav_welcome: string;
-  nav_lang_ru: string;
-  nav_lang_eng: string;
-
-  button_logout: string;
-  button_signin: string;
-  button_signup: string;
-
-  auth_guest_question: string;
-  auth_user_question: string;
-
-  email: string;
-  password: string;
-
-  NotFound_title: string;
-  NotFound_content: string;
-  NotFound__link_to_main: string;
-
-  link_to_main: string;
-
-  main: string;
 }
 
 export type DictionaryKey =
@@ -90,3 +65,8 @@ export type Dictionary = {
     en: string;
   };
 };
+
+export interface ILinkAsButtonProps {
+  title: DictionaryKey;
+  link: string;
+}
