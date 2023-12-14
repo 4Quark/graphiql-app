@@ -1,20 +1,9 @@
 import rsslogo from '../../assets/rsslogo.png';
-import ghlogo from '../../assets/github-mark-white.png';
 import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AppContext } from '../../context/ContextProvider';
-import { LANG } from '../../types/interface';
-
-const DevList = [
-  { nameEN: 'Maria Samoilova', nameRU: 'Мария Самойлова', github: 'https://github.com/4Quark' },
-  { nameEN: 'Anton Gulko', nameRU: 'Антон Гулько', github: 'https://github.com/johngaalt' },
-  { nameEN: 'Iryna Zhebryk', nameRU: 'Ирина Жебрик', github: 'https://github.com/iradzh' },
-];
+import Developer from '../Developer/Developer';
 
 const Footer = () => {
-  const { lang } = useContext(AppContext);
-
   return (
     <footer>
       <Grid
@@ -29,19 +18,9 @@ const Footer = () => {
 
         <Grid item xs={4}>
           <Grid container spacing={2} direction="column" className="items-center">
-            {DevList.map((person, index) => (
-              <Link
-                to={person.github}
-                target="_blank"
-                key={index}
-                className="flex justify-center items-center"
-              >
-                <img alt="github logo" src={ghlogo} className="h-4 px-2" />
-                <Typography variant="subtitle1">
-                  {lang === LANG.EN ? person.nameEN : person.nameRU}
-                </Typography>
-              </Link>
-            ))}
+            <Developer title="developerMaria" />
+            <Developer title="developerAnton" />
+            <Developer title="developerIryna" />
           </Grid>
         </Grid>
 

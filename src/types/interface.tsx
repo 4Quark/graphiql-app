@@ -60,16 +60,24 @@ export type DictionaryKey =
   | 'main'
   | 'EB_title'
   | 'EB_subtitle_01'
-  | 'EB_subtitle_02';
+  | 'EB_subtitle_02'
+  | 'developerMaria'
+  | 'developerIryna'
+  | 'developerAnton';
 
 export type Dictionary = {
   [key in DictionaryKey]: {
     ru: string;
     en: string;
+    github?: string;
   };
 };
 
 export interface ILinkAsButtonProps {
   title: DictionaryKey;
   link: string;
+}
+
+export interface IDeveloperProps {
+  title: string;
 }

@@ -76,8 +76,30 @@ export const dictionary: Dictionary = {
     ru: 'Пожалуйста, попробуйте обновить страницу.',
     en: 'Please try refreshing the page.',
   },
+
+  developerMaria: {
+    ru: 'Мария Самойлова',
+    en: 'Maria Samoilova',
+    github: 'https://github.com/4Quark',
+  },
+
+  developerIryna: {
+    ru: 'Ирина Жебрик',
+    en: 'Iryna Zhebryk',
+    github: 'https://github.com/iradzh',
+  },
+
+  developerAnton: {
+    ru: 'Антон Гулько',
+    en: 'Anton Gulko',
+    github: 'https://github.com/johngaalt',
+  },
 };
 
 export const useLanguage = <K extends keyof Dictionary>(key: K, lang: LangType) => {
   return dictionary[key][lang];
+};
+
+export const useGitLink = <K extends keyof Dictionary>(key: K) => {
+  return dictionary[key]['github'];
 };

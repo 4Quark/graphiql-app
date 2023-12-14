@@ -7,6 +7,7 @@ import { Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaEN, schemaRU } from './schema';
 import { AppContext } from '../../../context/ContextProvider';
+import { dictionary } from '../../../localization/useLanguage';
 
 const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
   const { lang } = useContext(AppContext);
@@ -52,7 +53,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           render={({ field }) => (
             <TextField
               id={`${title.toLowerCase()}Email`}
-              label={lang == 'en' ? 'Email' : 'Электронный адрес'}
+              label={dictionary.email[lang]}
               onChange={(e) => {
                 field.onChange(e);
                 onChangeInput('email', e.target.value);
@@ -72,7 +73,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           render={({ field }) => (
             <TextField
               id={`${title.toLowerCase()}Password`}
-              label={lang == 'en' ? 'Password' : 'Пароль'}
+              label={dictionary.password[lang]}
               onChange={(e) => {
                 field.onChange(e);
                 onChangeInput('password', e.target.value);
