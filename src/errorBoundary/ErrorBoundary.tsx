@@ -1,7 +1,8 @@
 import React from 'react';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary.types';
-import { Typography } from '@mui/material';
+import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined';
 import { Button } from '@mui/material';
+import ErrBoundContent from '../components/ErrBoundContent/ErrBoundContent';
 
 export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
@@ -25,28 +26,17 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
     if (this.state.hasError) {
       return (
         <div className="min-h-screen flex flex-col justify-center items-center pt-10">
-          <Typography variant="h3" gutterBottom>
-            Oops! Something went wrong.
-          </Typography>
-
-          <Typography variant="subtitle1" gutterBottom>
-            We are having trouble displaying this part of the application.
-          </Typography>
-
-          <Typography variant="subtitle1" gutterBottom>
-            Please try refreshing the page.
-          </Typography>
-
+          <ErrBoundContent />
           <Button
             variant="contained"
-            size="large"
+            size="medium"
             onClick={() => {
               window.location.reload();
             }}
           >
-            Refresh
+            <AutorenewOutlinedIcon />
           </Button>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
+          <details style={{ whiteSpace: 'pre-wrap', marginTop: '18px' }}>
             {this.state.error && this.state.error.toString()}
             <br />
             {this.state.errorInfo?.componentStack}

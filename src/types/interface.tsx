@@ -57,7 +57,10 @@ export type DictionaryKey =
   | 'NotFound_content'
   | 'NotFound__link_to_main'
   | 'link_to_main'
-  | 'main';
+  | 'main'
+  | 'EB_title'
+  | 'EB_subtitle_01'
+  | 'EB_subtitle_02';
 
 export type Dictionary = {
   [key in DictionaryKey]: {

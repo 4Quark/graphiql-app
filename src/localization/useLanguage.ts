@@ -61,6 +61,21 @@ export const dictionary: Dictionary = {
     ru: 'Главная',
     en: 'Main',
   },
+
+  EB_title: {
+    ru: 'Упс! Что-то пошло не так.',
+    en: 'Oops! Something went wrong.',
+  },
+
+  EB_subtitle_01: {
+    ru: 'У нас возникли проблемы с отображением этой части приложения.',
+    en: 'We are having trouble displaying this part of the application.',
+  },
+
+  EB_subtitle_02: {
+    ru: 'Пожалуйста, попробуйте обновить страницу.',
+    en: 'Please try refreshing the page.',
+  },
 };
 
 export const useLanguage = <K extends keyof Dictionary>(key: K, lang: LangType) => {

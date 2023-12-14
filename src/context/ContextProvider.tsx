@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { IAppContext, IAppContextProviderProps, LangType } from '../types/interface';
+import { IAppContext, IAppContextProviderProps, LANG, LangType } from '../types/interface';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../auth/firebase';
 
@@ -41,10 +41,14 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
   const [lang, setLang] = useState<LangType>('en');
 
   const toggleLang = () => {
-    if (lang == 'en') {
-      setLang('ru');
-    } else {
-      setLang('en');
+    switch (lang) {
+      case LANG.EN:
+        setLang(LANG.RU);
+        break;
+
+      case LANG.RU:
+        setLang(LANG.EN);
+        break;
     }
   };
 
