@@ -1,6 +1,7 @@
 import React from 'react';
 import { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary.types';
 import { Typography } from '@mui/material';
+import { Button } from '@mui/material';
 
 export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
@@ -36,6 +37,15 @@ export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, E
             Please try refreshing the page.
           </Typography>
 
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            Refresh
+          </Button>
           <details style={{ whiteSpace: 'pre-wrap' }}>
             {this.state.error && this.state.error.toString()}
             <br />
