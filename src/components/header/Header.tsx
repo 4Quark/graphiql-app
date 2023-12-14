@@ -29,8 +29,8 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full transition duration-500 ${
-        isScrolled ? 'bg-indigo-200' : 'bg-slate-200'
+      className={`fixed w-full transition duration-300 ${
+        isScrolled ? 'bg-indigo-200' : 'bg-slate-200 '
       }`}
     >
       <Grid container className="items-center px-10 h-14 p-2 gap-10">
