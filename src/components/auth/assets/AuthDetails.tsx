@@ -4,10 +4,11 @@ import { auth } from '../../../auth/firebase';
 import { Button } from '@mui/material';
 import { AppContext } from '../../../context/ContextProvider';
 import { useNavigate } from 'react-router-dom';
+import { useLanguage } from '../../../localization/strings';
 
 const AuthDetails = () => {
   const navigate = useNavigate();
-  const { user, logout, strings } = useContext(AppContext);
+  const { user, logout, lang } = useContext(AppContext);
 
   useEffect(() => {
     if (user == null) {
@@ -35,7 +36,7 @@ const AuthDetails = () => {
       <span>{user ? <span>{user.email}</span> : ''}</span>
 
       <Button onClick={userSignOut} variant="outlined" disabled={user?.email ? false : true}>
-        {strings.button_logout}
+        {useLanguage('button_logout', lang)}
       </Button>
     </>
   );

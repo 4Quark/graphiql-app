@@ -4,7 +4,7 @@ import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
-import { LANG } from '../../localization/strings';
+import { LANG } from '../../types/interface';
 
 const DevList = [
   { nameEN: 'Maria Samoilova', nameRU: 'Мария Самойлова', github: 'https://github.com/4Quark' },

@@ -28,11 +28,11 @@ const Header = () => {
 
   return (
     <header
-      className={`flex justify-between px-10 fixed w-full top-0 transition duration-500 ${
+      className={`fixed w-full transition duration-500 ${
         isScrolled ? 'bg-indigo-200' : 'bg-slate-200'
       }`}
     >
-      <Grid container className="items-center h-14 p-2 gap-10">
+      <Grid container className="items-center px-10 h-14 p-2 gap-10">
         <NavLink to="/">{strings.nav_welcome}</NavLink>
         <LanguageToggler />
         <AuthDetails />

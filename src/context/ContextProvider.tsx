@@ -1,14 +1,14 @@
 import { createContext, useEffect, useState } from 'react';
-import { IAppContext, IAppContextProviderProps } from '../types/interface';
+import { IAppContext, IAppContextProviderProps, LangType } from '../types/interface';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../auth/firebase';
-import { LANG, dataEN, dataRU } from '../localization/strings';
+import { dataEN, dataRU } from '../localization/strings';
 
 export const defaultValue: IAppContext = {
   user: null,
   login: () => {},
   logout: () => {},
-  lang: LANG.EN,
+  lang: 'en' as LangType,
   strings: dataEN,
   toggleLang: () => {},
 };
@@ -40,16 +40,16 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
     setUser(null);
   };
 
-  const [lang, setLang] = useState(LANG.EN);
+  const [lang, setLang] = useState<LangType>('en');
 
   const [strings, setstrings] = useState(dataEN);
 
   const toggleLang = () => {
-    if (lang === LANG.EN) {
-      setLang(LANG.RU);
+    if (lang == 'en') {
+      setLang('ru');
       setstrings(dataRU);
     } else {
-      setLang(LANG.EN);
+      setLang('en');
       setstrings(dataEN);
     }
   };

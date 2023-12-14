@@ -2,15 +2,14 @@ import React, { useContext, useState } from 'react';
 import { useForm, Resolver } from 'react-hook-form';
 import { Button, TextField, Typography } from '@mui/material';
 import { TogglePasswordVisibility } from './TogglePasswordVisibility';
-import { IAuthFormProps, IForm } from '../../../types/interface';
+import { IAuthFormProps, IForm, LANG } from '../../../types/interface';
 import { Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaEN, schemaRU } from './schema';
 import { AppContext } from '../../../context/ContextProvider';
-import { LANG } from '../../../localization/strings';
 
 const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
-  const { lang, strings } = useContext(AppContext);
+  const { lang } = useContext(AppContext);
 
   const resolver: Resolver<IForm> = yupResolver(lang === LANG.EN ? schemaEN : schemaRU);
 
@@ -53,7 +52,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           render={({ field }) => (
             <TextField
               id={`${title.toLowerCase()}Email`}
-              label={strings.email}
+              label={lang == 'en' ? 'email' : 'Электронный адрес'}
               onChange={(e) => {
                 field.onChange(e);
                 onChangeInput('email', e.target.value);
@@ -73,7 +72,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           render={({ field }) => (
             <TextField
               id={`${title.toLowerCase()}Password`}
-              label={strings.password}
+              label={lang == 'en' ? 'password' : 'Пароль'}
               onChange={(e) => {
                 field.onChange(e);
                 onChangeInput('password', e.target.value);

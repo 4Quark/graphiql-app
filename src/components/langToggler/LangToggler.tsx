@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
 import { Typography } from '@mui/material';
+import { useLanguage } from '../../localization/strings';
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 28,
@@ -48,14 +49,14 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function LanguageToggler() {
-  const { toggleLang, strings } = useContext(AppContext);
+  const { toggleLang, lang } = useContext(AppContext);
 
   return (
     <FormGroup onChange={toggleLang}>
       <Stack direction="row" spacing={1} alignItems="center">
-        <Typography>{strings.nav_lang_eng}</Typography>
+        <Typography>{useLanguage('nav_lang_eng', lang)}</Typography>
         <AntSwitch inputProps={{ 'aria-label': 'ant design' }} />
-        <Typography>{strings.nav_lang_ru}</Typography>
+        <Typography>{useLanguage('nav_lang_ru', lang)}</Typography>
       </Stack>
     </FormGroup>
   );

@@ -7,9 +7,10 @@ import { auth } from '../../auth/firebase';
 import { IForm } from '../../types/interface';
 import { SubmitHandler } from 'react-hook-form';
 import AuthForm from './assets/AuthForm';
+import { useLanguage } from '../../localization/strings';
 
 const SignIn = () => {
-  const { login, strings } = useContext(AppContext);
+  const { login, lang } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -29,13 +30,13 @@ const SignIn = () => {
 
   return (
     <div>
-      <AuthForm title={strings.button_signin} onSubmit={onSignIn} />
+      <AuthForm title={useLanguage('button_signin', lang)} onSubmit={onSignIn} />
       {errorMessage && <Alert severity="warning">{errorMessage}</Alert>}
 
       <Grid container className="text-center items-center py-10 gap-10">
-        <Typography>{strings.auth_guest_question}</Typography>
+        <Typography>{useLanguage('auth_guest_question', lang)}</Typography>
         <Button variant="outlined" onClick={() => navigate('/signup')}>
-          {strings.button_signup}
+          {useLanguage('button_signup', lang)}
         </Button>
       </Grid>
     </div>
