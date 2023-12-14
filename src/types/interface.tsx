@@ -44,8 +44,6 @@ export interface IAuthFormProps {
 
 export type DictionaryKey =
   | 'nav_welcome'
-  | 'nav_lang_ru'
-  | 'nav_lang_eng'
   | 'button_logout'
   | 'button_signin'
   | 'button_signup'

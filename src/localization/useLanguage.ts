@@ -5,14 +5,6 @@ export const dictionary: Dictionary = {
     ru: 'Домашняя',
     en: 'Home',
   },
-  nav_lang_ru: {
-    ru: 'РУ',
-    en: 'RU',
-  },
-  nav_lang_eng: {
-    ru: 'АНГ',
-    en: 'EN',
-  },
   button_logout: {
     ru: 'Выйти',
     en: 'Log out',
