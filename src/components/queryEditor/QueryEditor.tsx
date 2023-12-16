@@ -29,6 +29,7 @@ const QueryEditor: React.FC = () => {
       <div className="bg-zinc-700">
         <Stack direction="row" spacing={2}>
           <Button
+            type="submit"
             color="primary"
             size="small"
             variant="outlined"
@@ -48,7 +49,7 @@ const QueryEditor: React.FC = () => {
         </Stack>
       </div>
       <CodeMirror
-        height="600px"
+        height="350px"
         theme={okaidia}
         extensions={[graphql(), syntaxHighlighting(oneDarkHighlightStyle), autocompletion()]}
         placeholder="Type your GraphQL query here"
