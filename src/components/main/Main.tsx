@@ -11,11 +11,11 @@ const Main = () => {
   const [tabValue, setTabValue] = useState(0);
   const [showEditors, setShowEditors] = useState(true);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number): void => {
     setTabValue(newValue);
   };
 
-  const toggleEditorsVisibility = () => {
+  const toggleEditorsVisibility = (): void => {
     setShowEditors(!showEditors);
   };
 
