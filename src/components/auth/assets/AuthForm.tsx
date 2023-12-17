@@ -2,17 +2,17 @@ import React, { useContext, useState } from 'react';
 import { useForm, Resolver } from 'react-hook-form';
 import { Button, TextField, Typography } from '@mui/material';
 import { TogglePasswordVisibility } from './TogglePasswordVisibility';
-import { IAuthFormProps, IForm, LANG } from '../../../types/interface';
+import { IAuthFormProps, IForm } from '../../../types/interface';
 import { Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schemaEN, schemaRU } from './schema';
+import { getSchema } from './schema';
 import { AppContext } from '../../../context/ContextProvider';
 import { dictionary } from '../../../localization/useLanguage';
 
 const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
   const { lang } = useContext(AppContext);
 
-  const resolver: Resolver<IForm> = yupResolver(lang === LANG.EN ? schemaEN : schemaRU);
+  const resolver: Resolver<IForm> = yupResolver(getSchema(lang));
 
   const {
     handleSubmit,

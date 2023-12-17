@@ -7,7 +7,7 @@ export const defaultValue: IAppContext = {
   user: null,
   login: () => {},
   logout: () => {},
-  lang: LANG.EN as LangType,
+  lang: LANG.en,
   toggleLang: () => {},
 };
 
@@ -38,16 +38,16 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
     setUser(null);
   };
 
-  const [lang, setLang] = useState<LangType>(LANG.EN);
+  const [lang, setLang] = useState<LangType>(LANG.en);
 
   const toggleLang = () => {
     switch (lang) {
-      case LANG.EN:
-        setLang(LANG.RU);
+      case LANG.en:
+        setLang(LANG.ru);
         break;
 
-      case LANG.RU:
-        setLang(LANG.EN);
+      case LANG.ru:
+        setLang(LANG.en);
         break;
     }
   };

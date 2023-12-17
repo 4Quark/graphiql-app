@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
 import { useLanguage } from '../../localization/useLanguage';
@@ -9,8 +9,12 @@ const LinkAsButton = (prop: ILinkAsButtonProps) => {
   const { lang } = useContext(AppContext);
   const navigate = useNavigate();
 
+  const memoNavigate = useCallback(() => {
+    navigate(prop.link);
+  }, [navigate, prop.link]);
+
   return (
-    <Button onClick={() => navigate(prop.link)} variant="outlined" size="medium">
+    <Button onClick={memoNavigate} variant="outlined" size="medium">
       {useLanguage(prop.title, lang)}
     </Button>
   );
