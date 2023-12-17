@@ -27,7 +27,7 @@ export enum DEV_NAMES {
   ANTON = 'developerAnton',
   IRYNA = 'developerIryna',
 }
-export type TDevName = keyof typeof DEV_NAMES;
+export type TDevName = DEV_NAMES.MARIA | DEV_NAMES.ANTON | DEV_NAMES.IRYNA;
 
 export interface ToggleVisibilityProps {
   visible: boolean;
