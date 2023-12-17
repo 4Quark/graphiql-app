@@ -9,6 +9,8 @@ export const defaultValue: IAppContext = {
   logout: () => {},
   lang: LANG.EN as LangType,
   toggleLang: () => {},
+  queryResult: '{ }',
+  setQueryResult: () => {},
 };
 
 export const AppContext = createContext(defaultValue);
@@ -52,12 +54,16 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
     }
   };
 
+  const [queryResult, setQueryResult] = useState<string>('{ }');
+
   const contextValue: IAppContext = {
     user,
     login,
     logout,
     lang,
     toggleLang,
+    queryResult,
+    setQueryResult,
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

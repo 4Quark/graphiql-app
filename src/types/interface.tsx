@@ -20,6 +20,8 @@ export interface IAppContext {
   logout: () => void;
   lang: LangType;
   toggleLang: () => void;
+  queryResult: string;
+  setQueryResult: (value: string) => void;
 }
 
 export interface IAppContextProviderProps {

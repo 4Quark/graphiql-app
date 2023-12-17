@@ -1,5 +1,5 @@
 import { Paper, Button } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
 import { syntaxHighlighting } from '@codemirror/language';
@@ -10,6 +10,8 @@ import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
 import Stack from '@mui/material/Stack';
 import { prettifyQuery } from './QueryEditor.utils';
+import { GraphiQLService } from '../../services/GraphiQLService';
+import { AppContext } from '../../context/ContextProvider';
 
 const QueryEditor: React.FC = () => {
   const initialText: string = `# Welcome to GraphiQL
@@ -18,10 +20,18 @@ const QueryEditor: React.FC = () => {
   # testing GraphQL queries.
   `;
   const [query, setQuery] = useState(initialText);
+  const { setQueryResult } = useContext(AppContext);
 
   const handlePrettifyClick = () => {
     const prettyQuery = prettifyQuery(query);
     setQuery(prettyQuery);
+  };
+
+  const handleRunQuery = async () => {
+    const response = await GraphiQLService.runQuery(query);
+    let data = JSON.stringify(response);
+    data = data.replace(/{./g, '{\n').trim();
+    setQueryResult(data);
   };
 
   return (
@@ -32,6 +42,7 @@ const QueryEditor: React.FC = () => {
             color="secondary"
             size="small"
             variant="outlined"
+            onClick={handleRunQuery}
             startIcon={<PlayCircleOutlineOutlinedIcon />}
           >
             Run Query

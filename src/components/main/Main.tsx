@@ -1,9 +1,11 @@
 import { Container, Grid } from '@mui/material';
 import { JSONViewer } from '../jsonViewer/JsonViewer';
 import QueryEditor from '../queryEditor/QueryEditor';
+import { URLInput } from './URLInput';
 const Main = () => {
   return (
     <Container maxWidth={false} style={{ marginTop: '1rem' }}>
+      <URLInput />
       <Grid container spacing={2} justifyContent="center">
         <Grid item xs={12} md={6} lg={5} xl={4} style={{ maxWidth: '100%' }}>
           <QueryEditor />
