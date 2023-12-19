@@ -1,36 +1,48 @@
 export const prettifyQuery = (query: string): string => {
   let indentLevel = 0;
   let formattedQuery = '';
-  const lines = query.split('\n');
+  let currentLine = '';
+  let isInString = false;
 
-  for (const originalLine of lines) {
-    const trimmedLine = originalLine.trim();
+  const addLine = () => {
+    if (currentLine.trim() !== '') {
+      formattedQuery += '  '.repeat(indentLevel) + currentLine.trim() + '\n';
+    }
+    currentLine = '';
+  };
 
-    if (trimmedLine === '') continue;
-
-    if (trimmedLine.startsWith('}')) {
-      indentLevel = Math.max(indentLevel - 1, 0);
+  for (const char of query) {
+    if (char === '"' && currentLine.slice(-1) !== '\\') {
+      isInString = !isInString;
     }
 
-    let lineToAdd = '  '.repeat(indentLevel) + trimmedLine;
-
-    if (trimmedLine.endsWith('{')) {
-      indentLevel++;
+    if (char === '\n') {
+      addLine();
+      continue;
     }
 
-    const openingBraces = (trimmedLine.match(/{/g) || []).length;
-    const closingBraces = (trimmedLine.match(/}/g) || []).length;
-    if (openingBraces && closingBraces) {
-      if (openingBraces > closingBraces) {
-        indentLevel += openingBraces - closingBraces;
-      } else if (closingBraces > openingBraces) {
-        lineToAdd =
-          '  '.repeat(Math.max(indentLevel - (closingBraces - openingBraces), 0)) + trimmedLine;
+    if (!isInString) {
+      if (char === '{') {
+        addLine();
+        formattedQuery += '  '.repeat(indentLevel) + '{\n';
+        indentLevel++;
+        continue;
+      } else if (char === '}') {
+        addLine();
+        indentLevel = Math.max(indentLevel - 1, 0);
+        formattedQuery += '  '.repeat(indentLevel) + '}\n';
+        continue;
+      } else if (char === ',' || char === ';') {
+        currentLine += char;
+        addLine();
+        continue;
       }
     }
 
-    formattedQuery += lineToAdd + '\n';
+    currentLine += char;
   }
+
+  addLine();
 
   return formattedQuery.trim();
 };
