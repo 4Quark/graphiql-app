@@ -5,7 +5,7 @@ import { App } from '../../../pages/App';
 import SignUp from '../SignUp';
 import {
   createUserWithEmailAndPassword as mockCreateUserWithEmailAndPassword,
-  onAuthStateChanged as mockOnAuthStateChange,
+  signOut as mockSignOut,
 } from 'firebase/auth';
 import Main from '../../main/Main';
 
@@ -52,22 +52,26 @@ test('renders SignUp component', async () => {
   (mockCreateUserWithEmailAndPassword as jest.Mock).mockResolvedValueOnce({
     user: mockUser,
   });
-
-  const unsubscribeMock = jest.fn(); // Create a mock function
-  (mockOnAuthStateChange as jest.Mock).mockResolvedValueOnce(() => {
-    return unsubscribeMock;
-  });
-
   fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
   fireEvent.change(passwordInput, { target: { value: '12!@qwQW' } });
   fireEvent.click(submitButton);
 
   await waitFor(() => {
     expect(mockCreateUserWithEmailAndPassword).toHaveBeenCalledWith(
-      expect.anything(),
+      undefined,
       'test@example.com',
       '12!@qwQW'
     );
-    // expect(screen.queryByText('An error occurred')).toBeNull();
+
+    expect(screen.getByTestId('logged_in_email').textContent).toEqual('test@example.com');
+  });
+
+  (mockSignOut as jest.Mock).mockResolvedValueOnce({});
+
+  const signOutBtn = screen.getByTestId('sign_out_btn');
+  fireEvent.click(signOutBtn);
+
+  await waitFor(() => {
+    expect(screen.getByTestId('logged_in_email').textContent).toEqual('');
   });
 });
