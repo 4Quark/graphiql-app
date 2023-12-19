@@ -13,11 +13,7 @@ const ErrBoundContent = () => {
       </Typography>
 
       <Typography variant="subtitle1" gutterBottom>
-        {useLanguage('EB_subtitle_01', lang)}
-      </Typography>
-
-      <Typography variant="subtitle1" gutterBottom>
-        {useLanguage('EB_subtitle_02', lang)}
+        {useLanguage('EB_subtitle', lang)}
       </Typography>
     </>
   );
