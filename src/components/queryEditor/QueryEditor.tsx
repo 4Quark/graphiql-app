@@ -1,7 +1,7 @@
 import { Paper, Button } from '@mui/material';
 import { useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
-// import { graphql } from 'cm6-graphql';
+import { graphql } from 'cm6-graphql';
 import { syntaxHighlighting } from '@codemirror/language';
 import { oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
 import { autocompletion } from '@codemirror/autocomplete';
@@ -50,7 +50,7 @@ const QueryEditor: React.FC = () => {
       <CodeMirror
         height="600px"
         theme={okaidia}
-        extensions={[syntaxHighlighting(oneDarkHighlightStyle), autocompletion()]}
+        extensions={[graphql(), syntaxHighlighting(oneDarkHighlightStyle), autocompletion()]}
         placeholder="Type your GraphQL query here"
         value={query}
         onChange={(value) => setQuery(value)}
