@@ -1,15 +1,17 @@
 import { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../../context/ContextProvider';
-import { Alert, Button, Grid, Typography } from '@mui/material';
+import { Alert, Grid, Typography } from '@mui/material';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../auth/firebase';
 import { IForm } from '../../types/interface';
 import AuthForm from './assets/AuthForm';
 import { SubmitHandler } from 'react-hook-form';
+import { useLanguage } from '../../localization/useLanguage';
+import LinkAsButton from '../LinkAsButton/LinkAsButton';
 
 const SignUp = () => {
-  const { login } = useContext(AppContext);
+  const { login, lang } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -29,14 +31,12 @@ const SignUp = () => {
 
   return (
     <div>
-      <AuthForm title="Create Account" onSubmit={onSignUp} />
+      <AuthForm title={useLanguage('button_signup', lang)} onSubmit={onSignUp} />
       {errorMessage && <Alert severity="warning">{errorMessage}</Alert>}
 
       <Grid container className="text-center items-center py-10 gap-10">
-        <Typography>Already have an account?</Typography>
-        <Button variant="outlined">
-          <Link to="/signin"> Log in to your account</Link>
-        </Button>
+        <Typography>{useLanguage('auth_user_question', lang)}</Typography>
+        <LinkAsButton title="button_signin" link="/signin" />
       </Grid>
     </div>
   );

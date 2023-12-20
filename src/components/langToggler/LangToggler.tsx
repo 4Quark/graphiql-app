@@ -2,9 +2,9 @@ import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import Switch from '@mui/material/Switch';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
+import { Typography } from '@mui/material';
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 28,
@@ -53,9 +53,9 @@ export default function LanguageToggler() {
   return (
     <FormGroup onChange={toggleLang}>
       <Stack direction="row" spacing={1} alignItems="center">
-        <Typography>English</Typography>
+        <Typography>EN</Typography>
         <AntSwitch inputProps={{ 'aria-label': 'ant design' }} />
-        <Typography>Russian</Typography>
+        <Typography>РУ</Typography>
       </Stack>
     </FormGroup>
   );

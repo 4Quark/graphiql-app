@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
+import LinkAsButton from '../components/LinkAsButton/LinkAsButton';
 import { AppContext } from '../context/ContextProvider';
-import { useContext, useEffect, useState } from 'react';
 
 const Welcome = () => {
   const { user } = useContext(AppContext);
@@ -13,26 +13,20 @@ const Welcome = () => {
 
     validToken().catch(console.error);
   }, [user]);
-
   return (
-    <div>
-      <p>Welcome Page</p>
-
+    <>
       {user != null && token ? (
-        <Link to="/main">You are user, you could go to main</Link>
+        <LinkAsButton title="link_to_main" link="/main" />
       ) : (
-        <>
-          <p>You are not a user, create an acc</p>
-          <Link to="/signin">Sign In</Link>
-          <br />
-          <Link to="/signup">Sign Up</Link>
-        </>
+        <div className="flex items-center px-10 h-14 p-2 gap-5">
+          <LinkAsButton title="button_signin" link="/signin" />
+          <LinkAsButton title="button_signup" link="/signup" />
+        </div>
       )}
-      <hr />
       <div>
         <h3>General information about project course and developers HERE</h3>
       </div>
-    </div>
+    </>
   );
 };
 

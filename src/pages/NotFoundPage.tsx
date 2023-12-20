@@ -1,13 +1,19 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AppContext } from '../context/ContextProvider';
+import { useLanguage } from '../localization/useLanguage';
 
 const NotFoundPage = () => {
+  const { lang } = useContext(AppContext);
+
   return (
-    <div>
-      <h2>Sorry, the page you are looking for does not exist.</h2>
+    <>
+      <h2>{useLanguage('NotFound_title', lang)}</h2>
       <p>
-        Please check the URL or go back <Link to="/">Welcome page</Link>
+        {useLanguage('NotFound_content', lang)}
+        <Link to="/"> {useLanguage('NotFound__link_to_main', lang)}</Link>
       </p>
-    </div>
+    </>
   );
 };
 
