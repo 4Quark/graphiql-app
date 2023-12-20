@@ -87,6 +87,104 @@ export const dictionary = {
     linkedin: 'https://www.linkedin.com/feed/',
     email: 'rajon777666@gmail.com',
   },
+
+  responsibilities: {
+    ru: 'Обязанности',
+    en: 'Responsibilities',
+  },
+
+  developerMariaRespons: {
+    ru: ['Настройка проекта'],
+    en: ['Project setup'],
+  },
+
+  developerAntonRespons: {
+    ru: ['Функциональный редактор для редактирования запросов и форматирования', 'ErrorBoundary'],
+    en: ['Functional editor enabling query editing and prettifying', 'ErrorBoundary'],
+  },
+
+  developerIrynaRespons: {
+    ru: [
+      'Маршрутизатор: защищенные и общедоступные маршруты',
+      'Контекст приложения и локализация',
+      'Пользовательская аутентификация через Firebase',
+    ],
+    en: [
+      'Router: protected and public routes',
+      'App Context and Localisation',
+      'User Authentication via Firebase',
+    ],
+  },
+
+  location: {
+    ru: 'Город: ',
+    en: 'Located in ',
+  },
+
+  developerMariaLocation: {
+    ru: 'Москва, Россия',
+    en: 'Moscow, Russia',
+  },
+
+  developerAntonLocation: {
+    ru: 'Анталия, Турция',
+    en: 'Antalya, Turkey',
+  },
+
+  developerIrynaLocation: {
+    ru: 'Берлин, Германия',
+    en: 'Berlin, Germany',
+  },
+
+  reactTitle: {
+    ru: 'Курс React',
+    en: 'React Course',
+  },
+
+  reactParagraph_01: {
+    ru: `Курс React - это бесплатная образовательная программа, организованная сообществом разработчиков Rolling Scopes.`,
+    en: `React Course is free-of-charge and community-based education program conducted by The
+    Rolling Scopes developer community.`,
+  },
+  reactParagraph_02: {
+    ru: 'Учиться в RS School может каждый, независимо от возраста, профессиональной занятости или места жительства. Однако перед началом программы важно обладать достаточными базовыми знаниями.',
+    en: 'Everyone can study at RS School, regardless of age, professional employment, or place of residence. However, you should have sufficient base knowledge before the program begins.',
+  },
+
+  reactLink: {
+    ru: 'Подробнее',
+    en: 'More details',
+  },
+
+  projectTitle: {
+    ru: 'GraphiQL',
+    en: 'GraphiQL',
+  },
+
+  projectSubtitle: {
+    ru: 'GraphiQL',
+    en: 'Final task in React course',
+  },
+
+  projectParagraph_01: {
+    ru: '123',
+    en: '456',
+  },
+
+  projectParagraph_02: {
+    ru: '123',
+    en: '456',
+  },
+
+  projectParagraph_03: {
+    ru: '123',
+    en: '456',
+  },
+
+  projectLink: {
+    ru: 'Полное задание',
+    en: 'Full task description',
+  },
 };
 
 export const useLanguage = (key: DictionaryKey, option: LangType) => {

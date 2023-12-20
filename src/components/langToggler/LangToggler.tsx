@@ -51,7 +51,7 @@ export default function LanguageToggler() {
   const { toggleLang } = useContext(AppContext);
 
   return (
-    <FormGroup onChange={toggleLang}>
+    <FormGroup onChange={toggleLang} className="mx-10">
       <Stack direction="row" spacing={1} alignItems="center">
         <Typography>EN</Typography>
         <AntSwitch inputProps={{ 'aria-label': 'ant design' }} />
