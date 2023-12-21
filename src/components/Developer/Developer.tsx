@@ -3,21 +3,21 @@ import ghlogo from '../../assets/github-mark-white.png';
 import { Typography } from '@mui/material';
 import { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
-import { useGitLink, useLanguage } from '../../localization/useLanguage';
-import { DictionaryKey, IDeveloperProps } from '../../types/interface';
+import { getDeveloperData, useLanguage } from '../../localization/useLanguage';
+import { IDeveloperProps } from '../../types/interface';
 
 const Developer = (props: IDeveloperProps) => {
   const { lang } = useContext(AppContext);
-  const link = useGitLink(props.title as DictionaryKey);
+  const name = useLanguage(props.title, lang);
+  const github = getDeveloperData(props.title).github as To;
+
   return (
-    <div>
-      <Link to={link as To} target="_blank" className="flex justify-center items-center">
+    <>
+      <Link to={github} target="_blank" className="flex justify-center items-center">
         <img alt="github logo" src={ghlogo} className="h-4 px-2" />
-        <Typography variant="subtitle1">
-          {useLanguage(props.title as DictionaryKey, lang)}
-        </Typography>
+        <Typography variant="subtitle1">{name}</Typography>
       </Link>
-    </div>
+    </>
   );
 };
 

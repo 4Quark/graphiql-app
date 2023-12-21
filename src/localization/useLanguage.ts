@@ -1,6 +1,6 @@
-import { Dictionary, LangType } from '../types/interface';
+import { DictionaryKey, LangType, TDevName, TDeveloper } from '../types/interface';
 
-export const dictionary: Dictionary = {
+export const dictionary = {
   nav_welcome: {
     ru: 'Домашняя',
     en: 'Home',
@@ -59,39 +59,40 @@ export const dictionary: Dictionary = {
     en: 'Oops! Something went wrong.',
   },
 
-  EB_subtitle_01: {
-    ru: 'У нас возникли проблемы с отображением этой части приложения.',
-    en: 'We are having trouble displaying this part of the application.',
-  },
-
-  EB_subtitle_02: {
-    ru: 'Пожалуйста, попробуйте обновить страницу.',
-    en: 'Please try refreshing the page.',
+  EB_subtitle: {
+    ru: `У нас возникли проблемы с отображением этой части приложения. \nПожалуйста, попробуйте обновить страницу.`,
+    en: `We are having trouble displaying this part of the application. \nPlease try refreshing the page.`,
   },
 
   developerMaria: {
     ru: 'Мария Самойлова',
     en: 'Maria Samoilova',
     github: 'https://github.com/4Quark',
+    linkedin: 'https://www.linkedin.com/feed/',
+    email: 'mariya_baranova@list.ru',
   },
 
   developerIryna: {
     ru: 'Ирина Жебрик',
     en: 'Iryna Zhebryk',
     github: 'https://github.com/iradzh',
+    linkedin: 'https://www.linkedin.com/feed/',
+    email: 'irinazhebrik@gmail.com',
   },
 
   developerAnton: {
     ru: 'Антон Гулько',
     en: 'Anton Gulko',
     github: 'https://github.com/johngaalt',
+    linkedin: 'https://www.linkedin.com/feed/',
+    email: 'rajon777666@gmail.com',
   },
 };
 
-export const useLanguage = <K extends keyof Dictionary>(key: K, lang: LangType) => {
-  return dictionary[key][lang];
+export const useLanguage = (key: DictionaryKey, option: LangType) => {
+  return dictionary[key][option];
 };
 
-export const useGitLink = <K extends keyof Dictionary>(key: K) => {
-  return dictionary[key]['github'];
+export const getDeveloperData = (key: TDevName) => {
+  return dictionary[key] as TDeveloper;
 };

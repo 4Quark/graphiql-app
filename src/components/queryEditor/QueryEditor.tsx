@@ -1,14 +1,15 @@
 import { Paper, Button } from '@mui/material';
 import { useContext, useState } from 'react';
+import Stack from '@mui/material/Stack';
+import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
+import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
+import { useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
 import { syntaxHighlighting } from '@codemirror/language';
 import { oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
 import { autocompletion } from '@codemirror/autocomplete';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
-import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
-import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
-import Stack from '@mui/material/Stack';
 import { prettifyQuery } from './QueryEditor.utils';
 import { GraphiQLService } from '../../services/GraphiQLService';
 import { AppContext } from '../../context/ContextProvider';
@@ -39,7 +40,8 @@ const QueryEditor: React.FC = () => {
       <div className="bg-zinc-700">
         <Stack direction="row" spacing={2}>
           <Button
-            color="secondary"
+            type="submit"
+            color="primary"
             size="small"
             variant="outlined"
             onClick={handleRunQuery}
@@ -48,7 +50,7 @@ const QueryEditor: React.FC = () => {
             Run Query
           </Button>
           <Button
-            color="secondary"
+            color="primary"
             size="small"
             variant="outlined"
             onClick={handlePrettifyClick}
@@ -59,7 +61,7 @@ const QueryEditor: React.FC = () => {
         </Stack>
       </div>
       <CodeMirror
-        height="600px"
+        height="350px"
         theme={okaidia}
         extensions={[graphql(), syntaxHighlighting(oneDarkHighlightStyle), autocompletion()]}
         placeholder="Type your GraphQL query here"
