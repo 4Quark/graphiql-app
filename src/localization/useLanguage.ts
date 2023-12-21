@@ -87,6 +87,11 @@ export const dictionary = {
     linkedin: 'https://www.linkedin.com/feed/',
     email: 'rajon777666@gmail.com',
   },
+
+  toastWrongURL: {
+    ru: 'Упс! Кажется, введенный URL не поддерживает запросы GraphQL',
+    en: 'Oops! It seems the URL you entered does not support GraphQL queries',
+  },
 };
 
 export const useLanguage = (key: DictionaryKey, option: LangType) => {
