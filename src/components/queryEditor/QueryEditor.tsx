@@ -3,7 +3,6 @@ import { useContext, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined';
-import { useState } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { graphql } from 'cm6-graphql';
 import { syntaxHighlighting } from '@codemirror/language';

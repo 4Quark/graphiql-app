@@ -15,8 +15,6 @@ export const JSONViewer: React.FC = () => {
       <CodeMirror
         height="auto"
         theme={okaidia}
-        extensions={[json(), EditorView.editable.of(false)]}
-        value={queryResult}
         extensions={[json(), EditorView.editable.of(false), lintGutter()]}
         value={queryResult}
       />

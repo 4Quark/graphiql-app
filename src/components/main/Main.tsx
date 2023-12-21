@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { TabPanel } from './utils';
 
 const backgroundColor = '#272822';
-        
+
 const Main = () => {
   const [tabValue, setTabValue] = useState(0);
   const [showEditors, setShowEditors] = useState(true);
