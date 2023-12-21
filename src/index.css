@@ -21,3 +21,17 @@ a {
   text-decoration: inherit;
   font-weight: 800;
 }
+
+.documentation_container {
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  z-index: 10;
+  background-color: #cfd0ea;
+  border: solid 1.5px #8286ff;
+  border-radius: 4px;
+  padding: 10px;
+  width: 35%;
+  height: 85%;
+  overflow: scroll;
+}
