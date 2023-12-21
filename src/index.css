@@ -24,7 +24,7 @@ a {
 
 .documentation_container {
   position: absolute;
-  right: 10px;
+  left: 10px;
   top: 60px;
   z-index: 10;
   background-color: #cfd0ea;

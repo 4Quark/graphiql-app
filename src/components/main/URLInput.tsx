@@ -25,20 +25,22 @@ export const URLInput = function () {
   const fillExampleURL = () => setValue('url', 'https://rickandmortyapi.com/graphql');
 
   return (
-    <Form onSubmit={handleSubmitURL}>
-      <Input {...register('url')} />
-      <Button onClick={cleanInput}>Х</Button>
-      <Button type="submit" color="secondary" variant="outlined">
-        URL
-      </Button>
-      <Button variant="outlined" onClick={fillExampleURL}>
-        Example
-      </Button>
-      <Button variant="outlined" onClick={() => setIsDocumentationShow(!isDocumentationShow)}>
-        Show Documentation
-      </Button>
-      {isDocumentationShow && <Documentation schema={schema} />}
-      <div>currentURL: {currentURL}</div>
-    </Form>
+    <section className="flex items-center">
+      <div className="whitespace-nowrap">currentURL: {currentURL}</div>
+      <Form onSubmit={handleSubmitURL} className="w-full flex justify-end block p-3 gap-x-2">
+        <Input {...register('url')} />
+        <Button onClick={cleanInput}>Х</Button>
+        <Button type="submit" color="secondary" variant="outlined">
+          URL
+        </Button>
+        <Button variant="outlined" onClick={fillExampleURL}>
+          Example
+        </Button>
+        <Button variant="outlined" onClick={() => setIsDocumentationShow(!isDocumentationShow)}>
+          Show Documentation
+        </Button>
+        {isDocumentationShow && <Documentation schema={schema} />}
+      </Form>
+    </section>
   );
 };
