@@ -70,3 +70,12 @@ export interface ILinkAsButtonProps {
 export interface IDeveloperProps {
   title: TDevName;
 }
+
+export interface IDescriptionProps {
+  title: string;
+  subheader: string;
+  paragraphs: string[];
+  linkTitle: string;
+  linkTo: string;
+  logo: string;
+}

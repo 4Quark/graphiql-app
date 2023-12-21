@@ -1,23 +1,47 @@
 import { DEV_NAMES } from '../../types/interface';
-import CourseCard from './assets/CourseCard';
+import Description from './assets/Description';
 import DeveloperCard from './assets/DeveloperCard';
-import ProjectCard from './assets/ProjectCard';
+import graphqllogo from '../../assets/graphql-logo.png';
+import reactlogo from '../../assets/react-logo.png';
+import { useLanguage } from '../../localization/useLanguage';
+import { useContext } from 'react';
+import { AppContext } from '../../context/ContextProvider';
+import { Typography } from '@mui/material';
 
 const WelcomeContent = () => {
-  const developers = [DEV_NAMES.MARIA, DEV_NAMES.ANTON, DEV_NAMES.IRYNA];
+  const { lang } = useContext(AppContext);
+  const developers = [DEV_NAMES.ANTON, DEV_NAMES.MARIA, DEV_NAMES.IRYNA];
   return (
     <>
-      <div className="flex justify-center items-center w-9/12">
-        <ProjectCard />
-      </div>
+      <Description
+        title={useLanguage('projectTitle', lang)}
+        subheader={useLanguage('projectSubtitle', lang)}
+        paragraphs={[useLanguage('projectParagraph_01', lang)]}
+        linkTitle={useLanguage('projectLink', lang)}
+        linkTo="https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/graphiql.md"
+        logo={graphqllogo}
+      />
+
+      <Typography variant="h5">{useLanguage('team', lang)}</Typography>
+
       <div className="flex justify-between items-center w-9/12 flex-col gap-4 lg:flex-row lg:items-start my-10">
         {developers.map((dev) => (
           <DeveloperCard title={dev} key={dev} />
         ))}
       </div>
-      <div className="flex justify-center items-center w-9/12 mb-10">
-        <CourseCard />
-      </div>
+
+      <Description
+        title={useLanguage('reactTitle', lang)}
+        subheader="The Rolling Scopes"
+        paragraphs={[
+          useLanguage('reactParagraph_01', lang),
+          useLanguage('reactParagraph_02', lang),
+          useLanguage('reactParagraph_03', lang),
+        ]}
+        linkTitle={useLanguage('reactLink', lang)}
+        linkTo="https://rs.school/react/"
+        logo={reactlogo}
+      />
     </>
   );
 };

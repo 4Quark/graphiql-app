@@ -64,6 +64,11 @@ export const dictionary = {
     en: `We are having trouble displaying this part of the application. \nPlease try refreshing the page.`,
   },
 
+  team: {
+    ru: 'Команда:',
+    en: 'Team:',
+  },
+
   developerMaria: {
     ru: 'Мария Самойлова',
     en: 'Maria Samoilova',
@@ -93,29 +98,6 @@ export const dictionary = {
     en: 'Responsibilities',
   },
 
-  developerMariaRespons: {
-    ru: ['Настройка проекта'],
-    en: ['Project setup'],
-  },
-
-  developerAntonRespons: {
-    ru: ['Функциональный редактор для редактирования запросов и форматирования', 'ErrorBoundary'],
-    en: ['Functional editor enabling query editing and prettifying', 'ErrorBoundary'],
-  },
-
-  developerIrynaRespons: {
-    ru: [
-      'Маршрутизатор: защищенные и общедоступные маршруты',
-      'Контекст приложения и локализация',
-      'Пользовательская аутентификация через Firebase',
-    ],
-    en: [
-      'Router: protected and public routes',
-      'App Context and Localisation',
-      'User Authentication via Firebase',
-    ],
-  },
-
   location: {
     ru: 'Город: ',
     en: 'Located in ',
@@ -142,13 +124,18 @@ export const dictionary = {
   },
 
   reactParagraph_01: {
-    ru: `Курс React - это бесплатная образовательная программа, организованная сообществом разработчиков Rolling Scopes.`,
-    en: `React Course is free-of-charge and community-based education program conducted by The
-    Rolling Scopes developer community.`,
+    ru: `The Rolling Scopes - это бесплатная и образовательная программа на основе сообщества, проводимая сообществом разработчиков The Rolling Scopes с 2013 года.`,
+    en: `The Rolling Scopes is free-of-charge and community-based education program conducted by The Rolling Scopes developer community
+    since 2013.`,
   },
   reactParagraph_02: {
-    ru: 'Учиться в RS School может каждый, независимо от возраста, профессиональной занятости или места жительства. Однако перед началом программы важно обладать достаточными базовыми знаниями.',
-    en: 'Everyone can study at RS School, regardless of age, professional employment, or place of residence. However, you should have sufficient base knowledge before the program begins.',
+    ru: 'Курс по React доступен как для выпускников курса по JavaScript, так и для новых студентов. По завершении обучения студенты получат электронный сертификат об окончании.',
+    en: 'React course is availible for JS-course graduates as well as new students. After accomplishing an education, students will receive an electronic certificate of completion.',
+  },
+
+  reactParagraph_03: {
+    ru: `Этот курс доступен только на английском языке.`,
+    en: `This course is available only in English.`,
   },
 
   reactLink: {
@@ -162,23 +149,13 @@ export const dictionary = {
   },
 
   projectSubtitle: {
-    ru: 'GraphiQL',
+    ru: 'Финальный проект курса React',
     en: 'Final task in React course',
   },
 
   projectParagraph_01: {
-    ru: '123',
-    en: '456',
-  },
-
-  projectParagraph_02: {
-    ru: '123',
-    en: '456',
-  },
-
-  projectParagraph_03: {
-    ru: '123',
-    en: '456',
+    ru: 'Добро пожаловать в GraphiQL App, совместный проект нашей команды! Кроме того, мы внежрили здесь такие возможности как аутентификация пользователя и возможность работы с любым указанным пользователем открытым конечным точкам GraphQL.',
+    en: 'Welcome to the GraphiQL App, a collaborative effort by our team of developers! Here we provide a robust playground/IDE for making GraphQL requests. Our application goes beyond the standard GraphiQL example by incorporating advanced features such as user authentication and the ability to work with any user-specified open GraphQL endpoint.',
   },
 
   projectLink: {
