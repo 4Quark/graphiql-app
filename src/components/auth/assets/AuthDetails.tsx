@@ -33,7 +33,10 @@ const AuthDetails = () => {
 
   return (
     <>
-      <span data-testid="logged_in_email">{user ? user.email : ''}</span>
+      <span data-testid="logged_in_email" className="mx-4">
+        {user ? user.email : ''}
+      </span>
+
 
       <Button
         data-testid="sign_out_btn"

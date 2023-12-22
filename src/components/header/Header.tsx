@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import LanguageToggler from '../langToggler/LangToggler';
-import { Grid } from '@mui/material';
 import AuthDetails from '../auth/assets/AuthDetails';
 import { useContext, useEffect, useState } from 'react';
 import { useLanguage } from '../../localization/useLanguage';
@@ -25,15 +24,15 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full transition duration-300 ${
+      className={`fixed w-full transition duration-300 z-10 ${
         isScrolled ? 'bg-indigo-200' : 'bg-slate-200 '
       }`}
     >
-      <Grid container className="items-center px-10 h-14 p-2 gap-10">
+      <div className="flex flex-col items-center px-10 h-max p-2 gap-y-1 sm:flex-row sm:h-14">
         <NavLink to="/">{useLanguage('nav_welcome', lang)}</NavLink>
         <LanguageToggler />
         <AuthDetails />
-      </Grid>
+      </div>
     </header>
   );
 };
