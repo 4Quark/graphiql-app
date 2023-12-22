@@ -52,7 +52,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           name="email"
           render={({ field }) => (
             <TextField
-              id={`${title.toLowerCase()}Email`}
+              id="form-email"
               label={dictionary.email[lang]}
               onChange={(e) => {
                 field.onChange(e);
@@ -72,7 +72,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           name="password"
           render={({ field }) => (
             <TextField
-              id={`${title.toLowerCase()}Password`}
+              id="form-password"
               label={dictionary.password[lang]}
               onChange={(e) => {
                 field.onChange(e);
@@ -92,7 +92,7 @@ const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
           )}
         />
 
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" data-testid="submit_button">
           {title}
         </Button>
       </form>
