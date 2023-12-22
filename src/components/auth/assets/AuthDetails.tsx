@@ -37,6 +37,7 @@ const AuthDetails = () => {
         {user ? user.email : ''}
       </span>
 
+
       <Button
         data-testid="sign_out_btn"
         onClick={userSignOut}
