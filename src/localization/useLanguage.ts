@@ -64,6 +64,11 @@ export const dictionary = {
     en: `We are having trouble displaying this part of the application. \nPlease try refreshing the page.`,
   },
 
+  team: {
+    ru: 'Команда:',
+    en: 'Team:',
+  },
+
   developerMaria: {
     ru: 'Мария Самойлова',
     en: 'Maria Samoilova',
@@ -88,6 +93,76 @@ export const dictionary = {
     email: 'rajon777666@gmail.com',
   },
 
+  responsibilities: {
+    ru: 'Обязанности',
+    en: 'Responsibilities',
+  },
+
+  location: {
+    ru: 'Город: ',
+    en: 'Located in ',
+  },
+
+  developerMariaLocation: {
+    ru: 'Москва, Россия',
+    en: 'Moscow, Russia',
+  },
+
+  developerAntonLocation: {
+    ru: 'Анталия, Турция',
+    en: 'Antalya, Turkey',
+  },
+
+  developerIrynaLocation: {
+    ru: 'Берлин, Германия',
+    en: 'Berlin, Germany',
+  },
+
+  reactTitle: {
+    ru: 'Курс React',
+    en: 'React Course',
+  },
+
+  reactParagraph_01: {
+    ru: `The Rolling Scopes - это бесплатная и образовательная программа на основе сообщества, проводимая сообществом разработчиков The Rolling Scopes с 2013 года.`,
+    en: `The Rolling Scopes is free-of-charge and community-based education program conducted by The Rolling Scopes developer community
+    since 2013.`,
+  },
+  reactParagraph_02: {
+    ru: 'Курс по React доступен как для выпускников курса по JavaScript, так и для новых студентов. По завершении обучения студенты получат электронный сертификат об окончании.',
+    en: 'React course is availible for JS-course graduates as well as new students. After accomplishing an education, students will receive an electronic certificate of completion.',
+  },
+
+  reactParagraph_03: {
+    ru: `Этот курс доступен только на английском языке.`,
+    en: `This course is available only in English.`,
+  },
+
+  reactLink: {
+    ru: 'Подробнее',
+    en: 'More details',
+  },
+
+  projectTitle: {
+    ru: 'GraphiQL',
+    en: 'GraphiQL',
+  },
+
+  projectSubtitle: {
+    ru: 'Финальный проект курса React',
+    en: 'Final task in React course',
+  },
+
+  projectParagraph_01: {
+    ru: 'Добро пожаловать в GraphiQL App, совместный проект нашей команды! Кроме того, мы внежрили здесь такие возможности как аутентификация пользователя и возможность работы с любым указанным пользователем открытым конечным точкам GraphQL.',
+    en: 'Welcome to the GraphiQL App, a collaborative effort by our team of developers! Here we provide a robust playground/IDE for making GraphQL requests. Our application goes beyond the standard GraphiQL example by incorporating advanced features such as user authentication and the ability to work with any user-specified open GraphQL endpoint.',
+  },
+
+  projectLink: {
+    ru: 'Полное задание',
+    en: 'Full task description',
+  },
+  
   submitURL: {
     ru: 'выбрать URL',
     en: 'submit URL',
@@ -111,7 +186,7 @@ export const dictionary = {
   toastWrongQuery: {
     ru: 'Что-то пошло не так',
     en: 'Something go wrong',
-  },
+  }
 };
 
 export const useLanguage = (key: DictionaryKey, option: LangType) => {

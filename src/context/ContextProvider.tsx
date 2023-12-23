@@ -21,17 +21,13 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
         setUser(null);
       }
     });
-
-    return () => {
-      listen();
-    };
   }, []);
 
   const login = (user: User) => {

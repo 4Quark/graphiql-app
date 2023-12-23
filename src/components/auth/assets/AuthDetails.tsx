@@ -33,9 +33,17 @@ const AuthDetails = () => {
 
   return (
     <>
-      <span>{user ? <span>{user.email}</span> : ''}</span>
+      <span data-testid="logged_in_email" className="mx-4">
+        {user ? user.email : ''}
+      </span>
 
-      <Button onClick={userSignOut} variant="outlined" disabled={user?.email ? false : true}>
+
+      <Button
+        data-testid="sign_out_btn"
+        onClick={userSignOut}
+        variant="outlined"
+        disabled={user?.email ? false : true}
+      >
         {useLanguage('button_logout', lang)}
       </Button>
     </>
