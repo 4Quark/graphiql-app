@@ -1,31 +1,40 @@
-import { prettifyQuery } from '../components/queryEditor/QueryEditor.utils';
 import { getIntrospectionQuery } from 'graphql';
 import { buildClientSchema, printSchema } from 'graphql';
 
 export class GraphiQLService {
-  public static baseURL: string = 'https://rickandmortyapi.com/api/character';
+  public static baseURL: string = 'no URL';
 
   public static updateURL(url: string) {
     this.baseURL = url;
   }
 
-  public static async fetchRequest(query: string) {
-    return await fetch(this.baseURL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query }),
-    });
+  private static async fetchRequest(query: string, variables?: object) {
+    if (!variables) {
+      return await fetch(this.baseURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query }),
+      });
+    } else {
+      return await fetch(this.baseURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query,
+          variables,
+        }),
+      });
+    }
   }
 
-  public static async runQuery(query: string) {
-    query = prettifyQuery(query);
+  public static async runQuery(query: string, variables?: object) {
     query = query.replace(/^#.*?$/gim, '').trim();
-    const response = await this.fetchRequest(query);
+    const response = await this.fetchRequest(query, variables);
     const json = await response.json();
     return json;
   }
 
-  public static async schemaRequest() {
+  private static async schemaRequest() {
     return await fetch(this.baseURL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

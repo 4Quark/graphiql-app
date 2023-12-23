@@ -42,6 +42,8 @@ export interface IAppContext {
   toggleLang: () => void;
   queryResult: string;
   setQueryResult: (value: string) => void;
+  variables: object;
+  setVariables: (value: object) => void;
 }
 
 export interface IAppContextProviderProps {

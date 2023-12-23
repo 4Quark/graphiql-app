@@ -12,15 +12,17 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { prettifyQuery } from './QueryEditor.utils';
 import { GraphiQLService } from '../../services/GraphiQLService';
 import { AppContext } from '../../context/ContextProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import { dictionary } from '../../localization/useLanguage';
 
 const QueryEditor: React.FC = () => {
   const initialText: string = `# Welcome to GraphiQL
   #
-  # GraphiQL is an in-browser tool for writing, validating, and
-  # testing GraphQL queries.
+  # GraphiQL is an in-browser tool for writing, 
+  # validating and testing GraphQL queries.
   `;
   const [query, setQuery] = useState(initialText);
-  const { setQueryResult } = useContext(AppContext);
+  const { setQueryResult, variables, lang } = useContext(AppContext);
 
   const handlePrettifyClick = () => {
     const prettyQuery = prettifyQuery(query);
@@ -28,10 +30,18 @@ const QueryEditor: React.FC = () => {
   };
 
   const handleRunQuery = async () => {
-    const response = await GraphiQLService.runQuery(query);
-    let data = JSON.stringify(response);
-    data = data.replace(/{./g, '{\n').trim();
-    setQueryResult(data);
+    if (GraphiQLService.baseURL === 'no URL') {
+      toast.error(dictionary.toastEmptyQuery[lang], { position: 'top-right' });
+      return;
+    }
+    try {
+      const response = await GraphiQLService.runQuery(query, variables);
+      const data = JSON.stringify(response);
+      setQueryResult(prettifyQuery(data));
+    } catch {
+      setQueryResult('');
+      toast.warn(dictionary.toastWrongQuery[lang], { position: 'top-right' });
+    }
   };
 
   return (
@@ -67,6 +77,7 @@ const QueryEditor: React.FC = () => {
         value={query}
         onChange={(value) => setQuery(value)}
       />
+      <ToastContainer />
     </Paper>
   );
 };

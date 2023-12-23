@@ -11,34 +11,28 @@ import { AppContext } from '../../context/ContextProvider';
 
 export const URLInput = function () {
   const { register, setValue, handleSubmit } = useForm();
-  const [currentURL, setCurrentURL] = useState('no URL');
   const [isDocumentationShow, setIsDocumentationShow] = useState<boolean>(false);
   const [schema, setSchema] = useState<string | null>(null);
-  const { lang } = useContext(AppContext);
+  const { lang, setQueryResult } = useContext(AppContext);
 
   const cleanInput = () => setValue('url', '');
 
   const handleSubmitURL = handleSubmit(async (data) => {
+    if (data.url === '') {
+      toast.error(dictionary.toastEmptyQuery[lang], { position: 'top-right' });
+      return;
+    }
     try {
       GraphiQLService.updateURL(data.url);
-      setCurrentURL(data.url);
       const response = await GraphiQLService.runSchemaRequest();
-      console.log(response);
       const schema = JSON.stringify(response);
       setSchema(schema);
     } catch {
       setSchema(null);
+      setQueryResult('');
       setIsDocumentationShow(false);
-      setCurrentURL('no URL');
-      toast(dictionary.toastWrongURL[lang], {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      GraphiQLService.updateURL('no URL');
+      toast.warn(dictionary.toastWrongURL[lang], { position: 'top-right' });
     }
   });
 
@@ -46,22 +40,22 @@ export const URLInput = function () {
 
   return (
     <section className="flex items-center">
-      <div className="whitespace-nowrap">currentURL: {currentURL}</div>
+      <div className="whitespace-nowrap">currentURL: {GraphiQLService.baseURL}</div>
       <Form onSubmit={handleSubmitURL} className="w-full flex justify-end block p-3 gap-x-2">
         <Input {...register('url')} />
         <Button onClick={cleanInput}>Х</Button>
         <Button type="submit" color="secondary" variant="outlined">
-          URL
+          {dictionary.submitURL[lang]}
         </Button>
         <Button variant="outlined" onClick={fillExampleURL}>
-          Example
+          {dictionary.example[lang]}
         </Button>
         <Button
           variant="outlined"
           disabled={!schema}
           onClick={() => setIsDocumentationShow(!isDocumentationShow)}
         >
-          Show Documentation
+          {dictionary.documentation[lang]}
         </Button>
         {isDocumentationShow && schema && <Documentation schema={schema} />}
         <ToastContainer />
