@@ -11,7 +11,7 @@ export const defaultValue: IAppContext = {
   toggleLang: () => {},
   queryResult: '',
   setQueryResult: () => {},
-  variables: {},
+  variables: null,
   setVariables: () => {},
 };
 
@@ -53,7 +53,7 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
   };
 
   const [queryResult, setQueryResult] = useState<string>('');
-  const [variables, setVariables] = useState<object>({});
+  const [variables, setVariables] = useState<object | null>(null);
 
   const contextValue: IAppContext = {
     user,

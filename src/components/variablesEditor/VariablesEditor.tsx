@@ -13,7 +13,7 @@ const VariablesEditor: React.FC = () => {
       theme={okaidia}
       extensions={[json(), lintGutter()]}
       placeholder="Type your variables here"
-      value={variables.toString()}
+      value={variables ? variables.toString() : ''}
       onChange={(value) => setVariables(JSON.parse(value))}
     />
   );

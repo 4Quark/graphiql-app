@@ -162,7 +162,7 @@ export const dictionary = {
     ru: 'Полное задание',
     en: 'Full task description',
   },
-  
+
   submitURL: {
     ru: 'выбрать URL',
     en: 'submit URL',
@@ -186,7 +186,7 @@ export const dictionary = {
   toastWrongQuery: {
     ru: 'Что-то пошло не так',
     en: 'Something go wrong',
-  }
+  },
 };
 
 export const useLanguage = (key: DictionaryKey, option: LangType) => {

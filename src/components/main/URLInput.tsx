@@ -27,6 +27,7 @@ export const URLInput = function () {
       const response = await GraphiQLService.runSchemaRequest();
       const schema = JSON.stringify(response);
       setSchema(schema);
+      setQueryResult('');
     } catch {
       setSchema(null);
       setQueryResult('');
