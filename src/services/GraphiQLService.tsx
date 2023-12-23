@@ -8,7 +8,7 @@ export class GraphiQLService {
     this.baseURL = url;
   }
 
-  private static async fetchRequest(query: string, variables?: object) {
+  private static async fetchRequest(query: string, variables: object | null) {
     if (!variables) {
       return await fetch(this.baseURL, {
         method: 'POST',
@@ -27,7 +27,7 @@ export class GraphiQLService {
     }
   }
 
-  public static async runQuery(query: string, variables?: object) {
+  public static async runQuery(query: string, variables: object | null) {
     query = query.replace(/^#.*?$/gim, '').trim();
     const response = await this.fetchRequest(query, variables);
     const json = await response.json();
