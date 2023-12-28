@@ -1,5 +1,4 @@
 import { getIntrospectionQuery } from 'graphql';
-import { buildClientSchema, printSchema } from 'graphql';
 
 export class GraphiQLService {
   public static baseURL: string = 'no URL';
@@ -34,18 +33,11 @@ export class GraphiQLService {
     return json;
   }
 
-  private static async schemaRequest() {
+  public static async runSchemaRequest() {
     return await fetch(this.baseURL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query: getIntrospectionQuery() }),
-    })
-      .then((response) => response.json())
-      .then((schema) => printSchema(buildClientSchema(schema.data)));
-  }
-
-  public static async runSchemaRequest() {
-    const response = await this.schemaRequest();
-    return response;
+    }).then((response) => response.json());
   }
 }

@@ -2,8 +2,7 @@ import { Button, Input } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { Form } from 'react-router-dom';
 import { GraphiQLService } from '../../services/GraphiQLService';
-import { useContext, useState } from 'react';
-import { Documentation } from './Documentation';
+import { useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { dictionary } from '../../localization/useLanguage';
@@ -11,9 +10,8 @@ import { AppContext } from '../../context/ContextProvider';
 
 export const URLInput = function () {
   const { register, setValue, handleSubmit } = useForm();
-  const [isDocumentationShow, setIsDocumentationShow] = useState<boolean>(false);
-  const [schema, setSchema] = useState<string | null>(null);
-  const { lang, setQueryResult } = useContext(AppContext);
+  const { lang, schema, isDocumentationShow, setQueryResult, setSchema, setIsDocumentationShow } =
+    useContext(AppContext);
 
   const cleanInput = () => setValue('url', '');
 
@@ -25,8 +23,7 @@ export const URLInput = function () {
     try {
       GraphiQLService.updateURL(data.url);
       const response = await GraphiQLService.runSchemaRequest();
-      const schema = JSON.stringify(response);
-      setSchema(schema);
+      setSchema(response.data.__schema);
       setQueryResult('');
     } catch {
       setSchema(null);
@@ -58,7 +55,6 @@ export const URLInput = function () {
         >
           {dictionary.documentation[lang]}
         </Button>
-        {isDocumentationShow && schema && <Documentation schema={schema} />}
         <ToastContainer />
       </Form>
     </section>

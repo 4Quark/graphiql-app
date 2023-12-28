@@ -1,5 +1,11 @@
 import { createContext, useEffect, useState } from 'react';
-import { IAppContext, IAppContextProviderProps, LANG, LangType } from '../types/interface';
+import {
+  GQLSchema,
+  IAppContext,
+  IAppContextProviderProps,
+  LANG,
+  LangType,
+} from '../types/interface';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../auth/firebase';
 
@@ -13,6 +19,10 @@ export const defaultValue: IAppContext = {
   setQueryResult: () => {},
   variables: null,
   setVariables: () => {},
+  isDocumentationShow: false,
+  setIsDocumentationShow: () => {},
+  schema: null,
+  setSchema: () => {},
 };
 
 export const AppContext = createContext(defaultValue);
@@ -54,6 +64,8 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
 
   const [queryResult, setQueryResult] = useState<string>('');
   const [variables, setVariables] = useState<object | null>(null);
+  const [isDocumentationShow, setIsDocumentationShow] = useState<boolean>(false);
+  const [schema, setSchema] = useState<GQLSchema | null>(null);
 
   const contextValue: IAppContext = {
     user,
@@ -65,6 +77,10 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
     setQueryResult,
     variables,
     setVariables,
+    isDocumentationShow,
+    setIsDocumentationShow,
+    schema,
+    setSchema,
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;
