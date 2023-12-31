@@ -6,10 +6,10 @@ import { AppContext } from '../../context/ContextProvider';
 import { getDeveloperData, useLanguage } from '../../localization/useLanguage';
 import { IDeveloperProps } from '../../types/interface';
 
-const Developer = (props: IDeveloperProps) => {
+const Developer = ({ title }: IDeveloperProps) => {
   const { lang } = useContext(AppContext);
-  const name = useLanguage(props.title, lang);
-  const github = getDeveloperData(props.title).github;
+  const name = useLanguage(title, lang);
+  const github = getDeveloperData(title).github;
 
   return (
     <>

@@ -6,23 +6,23 @@ import { IDeveloperProps } from '../../../types/interface';
 import { useContext } from 'react';
 import { AppContext } from '../../../context/ContextProvider';
 
-const DeveloperCard = (props: IDeveloperProps) => {
+const DeveloperCard = ({ title }: IDeveloperProps) => {
   const { lang } = useContext(AppContext);
-  const name = useLanguage(props.title, lang);
-  const location = useLanguage(`${props.title}Location`, lang);
+  const name = useLanguage(title, lang);
+  const location = useLanguage(`${title}Location`, lang);
 
   const iconStyles = 'transform transition-transform hover:scale-125';
   const devLinks = [
     {
-      link: getDeveloperData(props.title).github,
+      link: getDeveloperData(title).github,
       icon: <BsGithub className={iconStyles} />,
     },
     {
-      link: getDeveloperData(props.title).linkedin,
+      link: getDeveloperData(title).linkedin,
       icon: <BsLinkedin className={iconStyles} />,
     },
     {
-      link: getDeveloperData(props.title).email,
+      link: getDeveloperData(title).email,
       icon: <BsEnvelopeFill className={iconStyles} />,
     },
   ];

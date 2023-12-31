@@ -5,17 +5,17 @@ import { AppContext } from '../../context/ContextProvider';
 import { useLanguage } from '../../localization/useLanguage';
 import { ILinkAsButtonProps } from '../../types/interface';
 
-const LinkAsButton = (prop: ILinkAsButtonProps) => {
+const LinkAsButton = ({ link, title }: ILinkAsButtonProps) => {
   const { lang } = useContext(AppContext);
   const navigate = useNavigate();
 
   const memoNavigate = useCallback(() => {
-    navigate(prop.link);
-  }, [navigate, prop.link]);
+    navigate(link);
+  }, [navigate, link]);
 
   return (
     <Button onClick={memoNavigate} variant="outlined" size="medium">
-      {useLanguage(prop.title, lang)}
+      {useLanguage(title, lang)}
     </Button>
   );
 };

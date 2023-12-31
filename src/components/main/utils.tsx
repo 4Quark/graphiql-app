@@ -3,9 +3,7 @@ import Typography from '@mui/material/Typography';
 import { TabPanelProps } from './Main.types';
 import { Stack } from '@mui/material';
 
-export function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
+export function TabPanel({ children, value, index, ...other }: TabPanelProps) {
   return (
     <Stack
       role="tabpanel"
