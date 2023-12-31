@@ -37,12 +37,11 @@ const AuthDetails = () => {
         {user ? user.email : ''}
       </span>
 
-
       <Button
         data-testid="sign_out_btn"
         onClick={userSignOut}
         variant="outlined"
-        disabled={user?.email ? false : true}
+        disabled={!user?.email}
       >
         {useLanguage('button_logout', lang)}
       </Button>

@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import { BsGithub, BsEnvelopeFill, BsLinkedin } from 'react-icons/bs';
-import { Link, To } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getDeveloperData, useLanguage } from '../../../localization/useLanguage';
 import { IDeveloperProps } from '../../../types/interface';
 import { useContext } from 'react';
@@ -35,8 +35,8 @@ const DeveloperCard = (props: IDeveloperProps) => {
         </Typography>
 
         <div className="flex items-center justify-center">
-          {devLinks.map((link) => (
-            <Link to={link.link as To} key={link.link} target="_blank" className="mb-3.5 mx-2">
+          {devLinks.map((link, index) => (
+            <Link to={link.link} key={index} target="_blank" className="mb-3.5 mx-2">
               {link.icon}
             </Link>
           ))}

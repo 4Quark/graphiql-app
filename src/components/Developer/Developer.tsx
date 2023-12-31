@@ -1,4 +1,4 @@
-import { Link, To } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ghlogo from '../../assets/github-mark-white.png';
 import { Typography } from '@mui/material';
 import { useContext } from 'react';
@@ -9,7 +9,7 @@ import { IDeveloperProps } from '../../types/interface';
 const Developer = (props: IDeveloperProps) => {
   const { lang } = useContext(AppContext);
   const name = useLanguage(props.title, lang);
-  const github = getDeveloperData(props.title).github as To;
+  const github = getDeveloperData(props.title).github;
 
   return (
     <>
