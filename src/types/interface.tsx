@@ -41,6 +41,8 @@ export interface IAppContext {
   logout: () => void;
   lang: LangType;
   toggleLang: () => void;
+  message: string;
+  displayMessage: (message: string) => void;
 }
 
 export interface IAppContextProviderProps {

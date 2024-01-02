@@ -4,7 +4,7 @@ import { AppContext } from '../context/ContextProvider';
 import WelcomeContent from '../components/WelcomeContent/WelcomeContent';
 
 const Welcome = () => {
-  const { user } = useContext(AppContext);
+  const { user, displayMessage } = useContext(AppContext);
   const [token, setToken] = useState<string | undefined>('');
 
   useEffect(() => {
@@ -12,8 +12,12 @@ const Welcome = () => {
       setToken(await user?.getIdToken(false));
     };
 
-    validToken().catch(console.error);
-  }, [user]);
+    validToken().catch((error) => {
+      console.error(error);
+      displayMessage(error);
+    });
+  }, [user, displayMessage]);
+
   return (
     <>
       <div className="flex justify-end w-9/12 mt-24 mb-10 gap-5 sm:my-10">

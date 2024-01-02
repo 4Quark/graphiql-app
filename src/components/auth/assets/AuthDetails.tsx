@@ -8,12 +8,12 @@ import { useLanguage } from '../../../localization/useLanguage';
 
 const AuthDetails = () => {
   const navigate = useNavigate();
-  const { user, logout, lang } = useContext(AppContext);
+  const { user, logout, lang, displayMessage } = useContext(AppContext);
 
   useEffect(() => {
-    if (user == null) {
+    if (!user) {
       navigate('/');
-    } else if (user != null) {
+    } else if (user) {
       user.getIdToken(false).then((token) => {
         if (!token) {
           navigate('/');
@@ -22,13 +22,16 @@ const AuthDetails = () => {
     }
   }, [navigate, user]);
 
-  const userSignOut = () => {
+  const userSignOut = (): void => {
     signOut(auth)
       .then(() => {
         logout();
         navigate('/');
       })
-      .catch((err) => console.error(err));
+      .catch((error) => {
+        console.error(error);
+        displayMessage(error);
+      });
   };
 
   return (

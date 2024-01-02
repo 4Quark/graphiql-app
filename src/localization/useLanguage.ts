@@ -162,6 +162,16 @@ export const dictionary = {
     ru: 'Полное задание',
     en: 'Full task description',
   },
+
+  errorTitle: {
+    ru: 'К сожалению, произошла ошибка: ',
+    en: 'Unfortunately, an error has occurred: ',
+  },
+
+  errorExcuse: {
+    ru: 'Пожалуйста, попробуйте позже',
+    en: 'Please, try later',
+  },
 };
 
 export const useLanguage = (key: DictionaryKey, option: LangType) => {
