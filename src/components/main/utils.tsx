@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { TabPanelProps } from './Main.types';
 import { Stack } from '@mui/material';
+import TabPanelProps from './Main.types';
 
 export function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
