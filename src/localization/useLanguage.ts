@@ -162,6 +162,31 @@ export const dictionary = {
     ru: 'Полное задание',
     en: 'Full task description',
   },
+
+  submitURL: {
+    ru: 'выбрать URL',
+    en: 'submit URL',
+  },
+  example: {
+    ru: 'пример URL',
+    en: 'URL example',
+  },
+  documentation: {
+    ru: 'документация',
+    en: 'documentation',
+  },
+  toastWrongURL: {
+    ru: 'Упс! Кажется, введенный URL не поддерживает запросы GraphQL',
+    en: 'Oops! It seems the URL you entered does not support GraphQL queries',
+  },
+  toastEmptyQuery: {
+    ru: 'Необходимо ввести адрес API',
+    en: 'The address of the API is needed',
+  },
+  toastWrongQuery: {
+    ru: 'Что-то пошло не так',
+    en: 'Something go wrong',
+  },
 };
 
 export const useLanguage = (key: DictionaryKey, option: LangType) => {
