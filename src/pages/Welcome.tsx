@@ -4,7 +4,7 @@ import { AppContext } from '../context/ContextProvider';
 import WelcomeContent from '../components/WelcomeContent/WelcomeContent';
 
 const Welcome = () => {
-  const { user, displayMessage } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   const [token, setToken] = useState<string | undefined>('');
 
   useEffect(() => {
@@ -14,9 +14,8 @@ const Welcome = () => {
 
     validToken().catch((error) => {
       console.error(error);
-      displayMessage(error);
     });
-  }, [user, displayMessage]);
+  }, [user]);
 
   return (
     <>

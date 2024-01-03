@@ -9,8 +9,6 @@ export const defaultValue: IAppContext = {
   logout: () => {},
   lang: LANG.en,
   toggleLang: () => {},
-  message: '',
-  displayMessage: () => {},
 };
 
 export const AppContext = createContext(defaultValue);
@@ -50,22 +48,12 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
     }
   };
 
-  const [message, setMessage] = useState('');
-
-  const displayMessage = (message: string) => {
-    console.log('displayMessage');
-
-    setMessage(message);
-  };
-
   const contextValue: IAppContext = {
     user,
     login,
     logout,
     lang,
     toggleLang,
-    message,
-    displayMessage,
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

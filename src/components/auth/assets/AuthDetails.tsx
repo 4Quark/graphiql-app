@@ -8,7 +8,7 @@ import { useLanguage } from '../../../localization/useLanguage';
 
 const AuthDetails = () => {
   const navigate = useNavigate();
-  const { user, logout, lang, displayMessage } = useContext(AppContext);
+  const { user, logout, lang } = useContext(AppContext);
 
   useEffect(() => {
     if (!user) {
@@ -30,7 +30,6 @@ const AuthDetails = () => {
       })
       .catch((error) => {
         console.error(error);
-        displayMessage(error);
       });
   };
 
