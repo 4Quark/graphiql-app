@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 import { IForm, LangType } from '../../../types/interface';
+import { VALIDATION_PATTERN } from '../../../utils/patterns';
 
 export const schemaDictionary = {
   schemaEmail: {
@@ -42,19 +43,16 @@ export const getSchema = (language: LangType) => {
     email: yup
       .string()
       .email(schemaDictionary['schemaEmail'][language])
-      .matches(
-        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-        schemaDictionary['schemaEmail'][language]
-      )
+      .matches(VALIDATION_PATTERN.EMAIL, schemaDictionary['schemaEmail'][language])
       .required(schemaDictionary['schemaRequierd'][language]),
     password: yup
       .string()
       .min(6, schemaDictionary['schemaLength'][language])
       .required(schemaDictionary['schemaRequierd'][language])
-      .matches(/\d/, schemaDictionary['schemaPassNum'][language])
-      .matches(/[A-Z]/, schemaDictionary['schemaPassUp'][language])
-      .matches(/[a-z]/, schemaDictionary['schemaPassLow'][language])
-      .matches(/[!?@#$%^&*]/, schemaDictionary['schemaPassSpec'][language]),
+      .matches(VALIDATION_PATTERN.PASS_NUM, schemaDictionary['schemaPassNum'][language])
+      .matches(VALIDATION_PATTERN.PASS_UPPER, schemaDictionary['schemaPassUp'][language])
+      .matches(VALIDATION_PATTERN.PASS_LOWER, schemaDictionary['schemaPassLow'][language])
+      .matches(VALIDATION_PATTERN.PASS_SPEC_CHAR, schemaDictionary['schemaPassSpec'][language]),
   });
   return schema;
 };

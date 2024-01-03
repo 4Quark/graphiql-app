@@ -11,9 +11,9 @@ const AuthDetails = () => {
   const { user, logout, lang } = useContext(AppContext);
 
   useEffect(() => {
-    if (user == null) {
+    if (!user) {
       navigate('/');
-    } else if (user != null) {
+    } else if (user) {
       user.getIdToken(false).then((token) => {
         if (!token) {
           navigate('/');
@@ -22,13 +22,15 @@ const AuthDetails = () => {
     }
   }, [navigate, user]);
 
-  const userSignOut = () => {
+  const userSignOut = (): void => {
     signOut(auth)
       .then(() => {
         logout();
         navigate('/');
       })
-      .catch((err) => console.error(err));
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -37,12 +39,11 @@ const AuthDetails = () => {
         {user ? user.email : ''}
       </span>
 
-
       <Button
         data-testid="sign_out_btn"
         onClick={userSignOut}
         variant="outlined"
-        disabled={user?.email ? false : true}
+        disabled={!user?.email}
       >
         {useLanguage('button_logout', lang)}
       </Button>

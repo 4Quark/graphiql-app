@@ -2,6 +2,7 @@ import { User } from 'firebase/auth';
 import { ReactNode } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { dictionary } from '../localization/useLanguage';
+import { To } from 'react-router-dom';
 
 export enum LANG {
   en = 'en',
@@ -17,9 +18,9 @@ export type DictionaryKey = keyof typeof dictionary;
 export type TDeveloper = {
   ru: string;
   en: string;
-  github: string;
-  linkedin: string;
-  email: string;
+  github: string | To;
+  linkedin: string | To;
+  email: string | To;
 };
 
 export enum DEV_NAMES {
@@ -27,7 +28,7 @@ export enum DEV_NAMES {
   ANTON = 'developerAnton',
   IRYNA = 'developerIryna',
 }
-export type TDevName = DEV_NAMES.MARIA | DEV_NAMES.ANTON | DEV_NAMES.IRYNA;
+export type TDevName = DEV_NAMES;
 
 export interface ToggleVisibilityProps {
   visible: boolean;

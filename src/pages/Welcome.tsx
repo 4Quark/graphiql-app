@@ -12,12 +12,15 @@ const Welcome = () => {
       setToken(await user?.getIdToken(false));
     };
 
-    validToken().catch(console.error);
+    validToken().catch((error) => {
+      console.error(error);
+    });
   }, [user]);
+
   return (
     <>
       <div className="flex justify-end w-9/12 mt-24 mb-10 gap-5 sm:my-10">
-        {user != null && token ? (
+        {user && token ? (
           <LinkAsButton title="link_to_main" link="/main" />
         ) : (
           <>
