@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import LinkAsButton from '../components/LinkAsButton/LinkAsButton';
 import { AppContext } from '../context/ContextProvider';
 import WelcomeContent from '../components/WelcomeContent/WelcomeContent';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Welcome = () => {
   const { user } = useContext(AppContext);
@@ -13,7 +14,7 @@ const Welcome = () => {
     };
 
     validToken().catch((error) => {
-      console.error(error);
+      toast.error(error.message ?? 'An error occurred', { position: 'top-right' });
     });
   }, [user]);
 
@@ -31,6 +32,8 @@ const Welcome = () => {
       </div>
 
       <WelcomeContent />
+
+      <ToastContainer />
     </>
   );
 };
