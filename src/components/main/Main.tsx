@@ -4,12 +4,13 @@ import QueryEditor from '../queryEditor/QueryEditor';
 import { URLInput } from './URLInput';
 import VariablesEditor from '../variablesEditor/VariablesEditor';
 import HeadersEditor from '../headersEditor/HeadersEditor';
+import { useMemo } from 'react';
+import { backgroundColor } from './Main.types';
+
 import { useContext, useState } from 'react';
 import { TabPanel } from './utils';
 import { Documentation } from './Documentation';
 import { AppContext } from '../../context/ContextProvider';
-
-const backgroundColor = '#272822';
 
 const Main = () => {
   const [tabValue, setTabValue] = useState(0);
@@ -24,8 +25,19 @@ const Main = () => {
     setShowEditors(!showEditors);
   };
 
-  const variablesStyles = { color: tabValue === 0 ? 'primary.main' : 'grey.500' };
-  const headersStyles = { color: tabValue === 1 ? 'primary.main' : 'grey.500' };
+  const variablesStyles = useMemo(
+    () => ({
+      color: tabValue === 0 ? 'primary.main' : 'grey.500',
+    }),
+    [tabValue]
+  );
+
+  const headersStyles = useMemo(
+    () => ({
+      color: tabValue === 1 ? 'primary.main' : 'grey.500',
+    }),
+    [tabValue]
+  );
   return (
     <Container maxWidth={false} sx={{ mt: 2 }}>
       <URLInput />
@@ -43,23 +55,21 @@ const Main = () => {
               }}
               variant="text"
             >
-              {showEditors ? 'Hide Editors' : 'Show Editors'}
+              {showEditors ? 'Hide' : 'Show'} Editors
             </Button>
             {showEditors && (
-              <Tabs
-                sx={{ backgroundColor: backgroundColor, paddingBottom: 1 }}
-                value={tabValue}
-                variant="scrollable"
-                scrollButtons="auto"
-                onChange={handleTabChange}
-                aria-label="editor tabs"
-              >
-                <Tab label="Variables" sx={variablesStyles} />
-                <Tab label="Headers" sx={headersStyles} />
-              </Tabs>
-            )}
-            {showEditors && (
               <>
+                <Tabs
+                  sx={{ backgroundColor: backgroundColor, paddingBottom: 1 }}
+                  value={tabValue}
+                  variant="scrollable"
+                  scrollButtons="auto"
+                  onChange={handleTabChange}
+                  aria-label="editor tabs"
+                >
+                  <Tab label="Variables" sx={variablesStyles} />
+                  <Tab label="Headers" sx={headersStyles} />
+                </Tabs>
                 <TabPanel value={tabValue} index={0}>
                   <VariablesEditor />
                 </TabPanel>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface ErrorBoundaryProps {
+interface ErrorBoundaryProps {
   children: React.ReactNode;
 }
 
@@ -9,3 +9,5 @@ export interface ErrorBoundaryState {
   error: Error | null;
   errorInfo?: React.ErrorInfo | null;
 }
+
+export default ErrorBoundaryProps;

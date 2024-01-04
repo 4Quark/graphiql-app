@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorBoundaryProps, ErrorBoundaryState } from './ErrorBoundary.types';
+import ErrorBoundaryProps, { ErrorBoundaryState } from './ErrorBoundary.types';
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined';
 import { Button } from '@mui/material';
 import ErrBoundContent from '../components/ErrBoundContent/ErrBoundContent';
