@@ -4,7 +4,6 @@ import { Form } from 'react-router-dom';
 import { GraphiQLService } from '../../services/GraphiQLService';
 import { useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { dictionary } from '../../localization/useLanguage';
 import { AppContext } from '../../context/ContextProvider';
 
