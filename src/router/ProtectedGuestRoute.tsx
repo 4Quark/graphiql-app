@@ -5,10 +5,5 @@ import { AppContext } from '../context/ContextProvider';
 
 export const ProtectedGuestRoute = () => {
   const { user } = useContext(AppContext);
-  return (
-    <>
-      {!user && <Outlet />}
-      {user && <Navigate to="/main" />}
-    </>
-  );
+  return <>{user ? <Navigate to="/main" /> : <Outlet />}</>;
 };
