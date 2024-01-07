@@ -45,6 +45,8 @@ export interface IAppContext {
   setQueryResult: (value: string) => void;
   variables: object | null;
   setVariables: (value: object) => void;
+  headersValue: string;
+  setHeadersValue: (value: string) => void;
   isDocumentationShow: boolean;
   setIsDocumentationShow: (value: boolean) => void;
   schema: GQLSchema | null;
