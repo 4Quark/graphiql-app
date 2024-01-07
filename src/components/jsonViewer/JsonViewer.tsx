@@ -13,7 +13,7 @@ export const JSONViewer: React.FC = () => {
     <Paper>
       <div className="bg-zinc-700 text-blue-400 p-1">JSON Viewer</div>
       <CodeMirror
-        height="auto"
+        height="472px"
         theme={okaidia}
         extensions={[json(), EditorView.editable.of(false), lintGutter()]}
         value={queryResult}
