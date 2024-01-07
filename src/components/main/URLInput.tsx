@@ -36,11 +36,11 @@ export const URLInput = function () {
   const fillExampleURL = () => setValue('url', 'https://rickandmortyapi.com/graphql');
 
   return (
-    <section className="flex items-center">
+    <section className="flex items-center mt-20">
       <div className="whitespace-nowrap">
         {dictionary.currentURL[lang]}: {GraphiQLService.baseURL}
       </div>
-      <Form onSubmit={handleSubmitURL} className="w-full flex justify-end block p-3 gap-x-2">
+      <Form onSubmit={handleSubmitURL} className="w-full flex justify-end flex-wrap p-3 gap-x-2">
         <Input {...register('url')} />
         <Button onClick={cleanInput}>Х</Button>
         <Button type="submit" color="secondary" variant="outlined">
