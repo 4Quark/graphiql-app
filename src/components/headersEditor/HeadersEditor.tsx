@@ -4,16 +4,17 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { lintGutter } from '@codemirror/lint';
 import { useContext } from 'react';
 import { AppContext } from '../../context/ContextProvider';
+import { dictionary } from '../../localization/useLanguage';
 
 const HeadersEditor: React.FC = () => {
-  const { headersValue, setHeadersValue } = useContext(AppContext);
+  const { headersValue, setHeadersValue, lang } = useContext(AppContext);
   return (
     <>
       <CodeMirror
         height="auto"
         theme={okaidia}
         extensions={[graphql(), lintGutter()]}
-        placeholder="Type your headers here"
+        placeholder={dictionary.typeHeadersHere[lang]}
         value={headersValue}
         onChange={(value) => setHeadersValue(value)}
       />

@@ -37,7 +37,9 @@ export const URLInput = function () {
 
   return (
     <section className="flex items-center">
-      <div className="whitespace-nowrap">currentURL: {GraphiQLService.baseURL}</div>
+      <div className="whitespace-nowrap">
+        {dictionary.currentURL[lang]}: {GraphiQLService.baseURL}
+      </div>
       <Form onSubmit={handleSubmitURL} className="w-full flex justify-end block p-3 gap-x-2">
         <Input {...register('url')} />
         <Button onClick={cleanInput}>Х</Button>

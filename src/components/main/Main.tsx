@@ -11,11 +11,12 @@ import { useContext, useState } from 'react';
 import { TabPanel } from './utils';
 import { Documentation } from './Documentation';
 import { AppContext } from '../../context/ContextProvider';
+import { dictionary } from '../../localization/useLanguage';
 
 const Main = () => {
   const [tabValue, setTabValue] = useState(0);
   const [showEditors, setShowEditors] = useState(true);
-  const { schema, isDocumentationShow } = useContext(AppContext);
+  const { schema, isDocumentationShow, lang } = useContext(AppContext);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number): void => {
     setTabValue(newValue);
@@ -55,7 +56,8 @@ const Main = () => {
               }}
               variant="text"
             >
-              {showEditors ? 'Hide' : 'Show'} Editors
+              {showEditors ? dictionary.hide[lang] : dictionary.show[lang]}
+              {dictionary.editors[lang]}
             </Button>
             {showEditors && (
               <>
@@ -67,8 +69,8 @@ const Main = () => {
                   onChange={handleTabChange}
                   aria-label="editor tabs"
                 >
-                  <Tab label="Variables" sx={variablesStyles} />
-                  <Tab label="Headers" sx={headersStyles} />
+                  <Tab label={dictionary.variables[lang]} sx={variablesStyles} />
+                  <Tab label={dictionary.headers[lang]} sx={headersStyles} />
                 </Tabs>
                 <TabPanel value={tabValue} index={0}>
                   <VariablesEditor />

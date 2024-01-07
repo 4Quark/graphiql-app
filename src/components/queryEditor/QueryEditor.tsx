@@ -74,7 +74,7 @@ const QueryEditor: React.FC = () => {
             onClick={handleRunQuery}
             startIcon={<PlayCircleOutlineOutlinedIcon />}
           >
-            Run Query
+            {dictionary.runQuery[lang]}
           </Button>
           <Button
             color="primary"
@@ -83,7 +83,7 @@ const QueryEditor: React.FC = () => {
             onClick={handlePrettifyClick}
             startIcon={<AutoFixHighOutlinedIcon />}
           >
-            Prettify
+            {dictionary.prettify[lang]}
           </Button>
         </Stack>
       </div>
