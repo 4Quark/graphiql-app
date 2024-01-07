@@ -43,8 +43,8 @@ export interface IAppContext {
   toggleLang: () => void;
   queryResult: string;
   setQueryResult: (value: string) => void;
-  variables: object | null;
-  setVariables: (value: object) => void;
+  variablesValue: string;
+  setVariablesValue: (value: string) => void;
   headersValue: string;
   setHeadersValue: (value: string) => void;
   isDocumentationShow: boolean;
