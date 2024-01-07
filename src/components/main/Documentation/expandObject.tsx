@@ -18,7 +18,8 @@ export const ExpandObject = function ({ name, fields }: { name: string; fields: 
               <span className="text-cyan-900">{type.name}</span>
               {type.args?.length
                 ? `(${type.args.map(
-                    (arg: GQLArgument) => `${arg.name}: ${arg.type?.name ?? arg.type?.ofType?.name}`
+                    (arg: GQLArgument) =>
+                      `${arg.name}: ${arg.type?.name ?? arg.type?.ofType?.name ?? ''}`
                   )})`
                 : ''}
               :{' '}
