@@ -8,7 +8,7 @@ const Footer = () => {
   const developers = [DEV_NAMES.ANTON, DEV_NAMES.MARIA, DEV_NAMES.IRYNA];
 
   return (
-    <footer className="flex flex-col justify-between items-center py-8 px-20 h-54 text-white bg-gray-900 gap-y-4 sm:flex-row">
+    <footer className="flex flex-col justify-between items-center mt-20 py-8 px-20 h-54 text-white bg-gray-900 gap-y-4 sm:flex-row">
       <Grid item xs={4}>
         <Link to="https://rs.school/" target="_blank">
           <img alt="rss school logo" src={rsslogo} className="h-12 mx-auto" />
