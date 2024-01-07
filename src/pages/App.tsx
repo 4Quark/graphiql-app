@@ -3,6 +3,7 @@ import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 import AppContextProvider from '../context/ContextProvider';
+import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
   return (
@@ -13,6 +14,7 @@ export const App = () => {
           <Outlet />
         </div>
         <Footer />
+        <ToastContainer />
       </AppContextProvider>
     </ErrorBoundary>
   );

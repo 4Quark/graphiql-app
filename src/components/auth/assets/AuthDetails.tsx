@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import { AppContext } from '../../../context/ContextProvider';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../../localization/useLanguage';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const AuthDetails = () => {
   const navigate = useNavigate();
@@ -48,8 +48,6 @@ const AuthDetails = () => {
       >
         {useLanguage('button_logout', lang)}
       </Button>
-
-      <ToastContainer />
     </>
   );
 };

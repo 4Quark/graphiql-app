@@ -11,7 +11,7 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { prettifyQuery } from './QueryEditor.utils';
 import { GraphiQLService } from '../../services/GraphiQLService';
 import { AppContext } from '../../context/ContextProvider';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { dictionary } from '../../localization/useLanguage';
 
 const QueryEditor: React.FC = () => {
@@ -95,7 +95,6 @@ const QueryEditor: React.FC = () => {
         value={query}
         onChange={(value) => setQuery(value)}
       />
-      <ToastContainer />
     </Paper>
   );
 };

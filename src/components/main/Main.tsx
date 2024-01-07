@@ -6,7 +6,6 @@ import VariablesEditor from '../variablesEditor/VariablesEditor';
 import HeadersEditor from '../headersEditor/HeadersEditor';
 import { useMemo } from 'react';
 import { backgroundColor } from './Main.types';
-
 import { useContext, useState } from 'react';
 import { TabPanel } from './utils';
 import { Documentation } from './Documentation';
