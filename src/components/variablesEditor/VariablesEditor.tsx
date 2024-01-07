@@ -6,7 +6,7 @@ import { lintGutter } from '@codemirror/lint';
 import { AppContext } from '../../context/ContextProvider';
 import { dictionary } from '../../localization/useLanguage';
 const VariablesEditor: React.FC = () => {
-  const { variables, setVariables, lang } = useContext(AppContext);
+  const { variablesValue, setVariablesValue, lang } = useContext(AppContext);
 
   return (
     <CodeMirror
@@ -14,8 +14,8 @@ const VariablesEditor: React.FC = () => {
       theme={okaidia}
       extensions={[json(), lintGutter()]}
       placeholder={dictionary.typeVariablesHere[lang]}
-      value={variables ? variables.toString() : ''}
-      onChange={(value) => setVariables(JSON.parse(value))}
+      value={variablesValue}
+      onChange={(value) => setVariablesValue(value)}
     />
   );
 };

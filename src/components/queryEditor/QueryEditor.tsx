@@ -21,7 +21,7 @@ const QueryEditor: React.FC = () => {
   # validating and testing GraphQL queries.
   `;
   const [query, setQuery] = useState(initialText);
-  const { headersValue, setQueryResult, variables, lang } = useContext(AppContext);
+  const { headersValue, setQueryResult, variablesValue, lang } = useContext(AppContext);
 
   const handlePrettifyClick = () => {
     const prettyQuery = prettifyQuery(query);
@@ -48,6 +48,7 @@ const QueryEditor: React.FC = () => {
   };
 
   const handleRunQuery = async () => {
+    const variables = variablesValue !== '' ? JSON.parse(variablesValue) : null;
     if (GraphiQLService.baseURL === 'no URL') {
       toast.error(dictionary.toastEmptyQuery[lang], { position: 'top-right' });
       return;
