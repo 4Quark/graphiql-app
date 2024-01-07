@@ -167,13 +167,65 @@ export const dictionary = {
     ru: 'выбрать URL',
     en: 'submit URL',
   },
+  currentURL: {
+    ru: 'текущий URL',
+    en: 'current URL',
+  },
   example: {
     ru: 'пример URL',
     en: 'URL example',
   },
   documentation: {
-    ru: 'документация',
-    en: 'documentation',
+    ru: 'Документация',
+    en: 'Documentation',
+  },
+  documentationPromo: {
+    ru: 'Схема GraphQL для каждого типа операций. Клик по выбранному типу раскроет более подробное описание',
+    en: 'A GraphQL schema provides a root type for each kind of operation. For detailed information, click on the selected type',
+  },
+  rootTypes: {
+    ru: 'Корневые типы',
+    en: 'Root Types',
+  },
+  allTypes: {
+    ru: 'Все типы',
+    en: 'All Schema Types',
+  },
+  runQuery: {
+    ru: 'Выполнить запрос',
+    en: 'Run Query',
+  },
+  prettify: {
+    ru: 'Преобразовать',
+    en: 'Prettify',
+  },
+  variables: {
+    ru: 'Переменные',
+    en: 'Variables',
+  },
+  show: {
+    ru: 'Показать',
+    en: 'Show',
+  },
+  hide: {
+    ru: 'Скрыть',
+    en: 'Hide',
+  },
+  editors: {
+    ru: ' редактор переменных и заголовков',
+    en: ' editors',
+  },
+  headers: {
+    ru: 'Заголовки',
+    en: 'Headers',
+  },
+  typeVariablesHere: {
+    ru: 'Введите переменные в это поле',
+    en: 'Type your variables here',
+  },
+  typeHeadersHere: {
+    ru: 'Введите заголовки в это поле',
+    en: 'Type your headers here',
   },
   toastWrongURL: {
     ru: 'Упс! Кажется, введенный URL не поддерживает запросы GraphQL',
