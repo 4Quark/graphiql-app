@@ -14,9 +14,15 @@ export const Documentation = function () {
         <p className="text-sm">A GraphQL schema provides a root type for each kind of operation</p>
 
         <h3 className="text-lg font-semibold">Root Types</h3>
-        {schema.queryType && <RootTypeBlock rootType="query" />}
-        {schema.mutationType && <RootTypeBlock rootType="mutation" />}
-        {schema.subscriptionType && <RootTypeBlock rootType="subscription" />}
+        {schema.queryType && (
+          <RootTypeBlock rootType="query" rootTypeName={schema.queryType.name} />
+        )}
+        {schema.mutationType && (
+          <RootTypeBlock rootType="mutation" rootTypeName={schema.mutationType.name} />
+        )}
+        {schema.subscriptionType && (
+          <RootTypeBlock rootType="subscription" rootTypeName={schema.subscriptionType.name} />
+        )}
 
         <h3 className="text-lg font-semibold">All Schema Types</h3>
         <AllTypes />
