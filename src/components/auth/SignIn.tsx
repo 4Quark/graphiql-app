@@ -9,7 +9,7 @@ import { SubmitHandler } from 'react-hook-form';
 import AuthForm from './assets/AuthForm';
 import { useLanguage } from '../../localization/useLanguage';
 import LinkAsButton from '../LinkAsButton/LinkAsButton';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
   const { login, lang } = useContext(AppContext);
@@ -33,7 +33,6 @@ const SignIn = () => {
         <Typography>{useLanguage('auth_guest_question', lang)}</Typography>
         <LinkAsButton title="button_signup" link="/signup" />
       </Grid>
-      <ToastContainer />
     </div>
   );
 };
