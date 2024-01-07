@@ -19,6 +19,10 @@ export const defaultValue: IAppContext = {
   setQueryResult: () => {},
   variables: null,
   setVariables: () => {},
+  headersValue: '',
+  setHeadersValue: () => {},
+  headers: null,
+  setHeaders: () => {},
   isDocumentationShow: false,
   setIsDocumentationShow: () => {},
   schema: null,
@@ -64,6 +68,8 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
 
   const [queryResult, setQueryResult] = useState<string>('');
   const [variables, setVariables] = useState<object | null>(null);
+  const [headersValue, setHeadersValue] = useState<string>('');
+  const [headers, setHeaders] = useState<HeadersInit | null>(null);
   const [isDocumentationShow, setIsDocumentationShow] = useState<boolean>(false);
   const [schema, setSchema] = useState<GQLSchema | null>(null);
 
@@ -77,6 +83,10 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
     setQueryResult,
     variables,
     setVariables,
+    headersValue,
+    setHeadersValue,
+    headers,
+    setHeaders,
     isDocumentationShow,
     setIsDocumentationShow,
     schema,

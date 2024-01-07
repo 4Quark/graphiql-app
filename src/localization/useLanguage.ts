@@ -187,6 +187,10 @@ export const dictionary = {
     ru: 'Что-то пошло не так',
     en: 'Something go wrong',
   },
+  toastWrongHeader: {
+    ru: 'Введен некорректный заголовок',
+    en: 'Incorrect Header entered',
+  },
 };
 
 export const useLanguage = (key: DictionaryKey, option: LangType) => {

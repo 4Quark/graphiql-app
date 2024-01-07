@@ -7,17 +7,21 @@ export class GraphiQLService {
     this.baseURL = url;
   }
 
-  private static async fetchRequest(query: string, variables: object | null) {
+  private static async fetchRequest(
+    query: string,
+    variables: object | null,
+    headers: HeadersInit = { 'Content-Type': 'application/json' }
+  ) {
     if (!variables) {
       return await fetch(this.baseURL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({ query }),
       });
     } else {
       return await fetch(this.baseURL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify({
           query,
           variables,
@@ -26,9 +30,9 @@ export class GraphiQLService {
     }
   }
 
-  public static async runQuery(query: string, variables: object | null) {
+  public static async runQuery(query: string, variables: object | null, headers?: HeadersInit) {
     query = query.replace(/^#.*?$/gim, '').trim();
-    const response = await this.fetchRequest(query, variables);
+    const response = await this.fetchRequest(query, variables, headers);
     const json = await response.json();
     return json;
   }

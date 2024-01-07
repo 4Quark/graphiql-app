@@ -22,11 +22,30 @@ const QueryEditor: React.FC = () => {
   # validating and testing GraphQL queries.
   `;
   const [query, setQuery] = useState(initialText);
-  const { setQueryResult, variables, lang } = useContext(AppContext);
+  const { headersValue, setQueryResult, variables, lang } = useContext(AppContext);
 
   const handlePrettifyClick = () => {
     const prettyQuery = prettifyQuery(query);
     setQuery(prettyQuery);
+  };
+
+  const buildHeaders = () => {
+    const myHeaders: HeadersInit = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    if (headersValue !== '') {
+      const headersString: string = headersValue;
+      const headersArray = headersString.split('\n');
+      headersArray.map((header) => {
+        const regex = /([^:]+):(.+)/;
+        const result = header.match(regex);
+        if (result) {
+          myHeaders.append(result[1], result[2]);
+        } else {
+          toast.warn(dictionary.toastWrongHeader[lang], { position: 'top-right' });
+        }
+      });
+    }
+    return myHeaders;
   };
 
   const handleRunQuery = async () => {
@@ -35,7 +54,7 @@ const QueryEditor: React.FC = () => {
       return;
     }
     try {
-      const response = await GraphiQLService.runQuery(query, variables);
+      const response = await GraphiQLService.runQuery(query, variables, buildHeaders());
       const data = JSON.stringify(response);
       setQueryResult(prettifyQuery(data));
     } catch {
