@@ -3,13 +3,10 @@ import { BsGithub, BsEnvelopeFill, BsLinkedin } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { getDeveloperData, useLanguage } from '../../../services/localization/useLanguage';
 import { IDeveloperProps } from '../../../types/interface';
-import { useContext } from 'react';
-import { AppContext } from '../../../services/context/contextProvider';
 
 const DeveloperCard = ({ title }: IDeveloperProps) => {
-  const { lang } = useContext(AppContext);
-  const name = useLanguage(title, lang);
-  const location = useLanguage(`${title}Location`, lang);
+  const name = useLanguage(title);
+  const location = useLanguage(`${title}Location`);
 
   const iconStyles = 'transform transition-transform hover:scale-125';
   const devLinks = [
@@ -43,7 +40,7 @@ const DeveloperCard = ({ title }: IDeveloperProps) => {
         </div>
 
         <Typography align="center">
-          {useLanguage('location', lang)}
+          {useLanguage('location')}
           {location}
         </Typography>
       </CardContent>

@@ -1,4 +1,6 @@
-import { DictionaryKey, LangType, TDevName, TDeveloper } from '../../types/interface';
+import { useContext } from 'react';
+import { DictionaryKey, TDevName, TDeveloper } from '../../types/interface';
+import { AppContext } from '../context/ContextProvider';
 
 export const dictionary = {
   nav_welcome: {
@@ -126,7 +128,7 @@ export const dictionary = {
   reactParagraph_01: {
     ru: `The Rolling Scopes - это бесплатная и образовательная программа на основе сообщества, проводимая сообществом разработчиков The Rolling Scopes с 2013 года.`,
     en: `The Rolling Scopes is free-of-charge and community-based education program conducted by The Rolling Scopes developer community
-    since 2013.`,
+      since 2013.`,
   },
   reactParagraph_02: {
     ru: 'Курс по React доступен как для выпускников курса по JavaScript, так и для новых студентов. По завершении обучения студенты получат электронный сертификат об окончании.',
@@ -245,8 +247,9 @@ export const dictionary = {
   },
 };
 
-export const useLanguage = (key: DictionaryKey, option: LangType) => {
-  return dictionary[key][option];
+export const useLanguage = (key: DictionaryKey) => {
+  const { lang } = useContext(AppContext);
+  return dictionary[key][lang];
 };
 
 export const getDeveloperData = (key: TDevName) => {

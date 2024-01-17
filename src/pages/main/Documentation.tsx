@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppContext } from '../../services/context/contextProvider';
+import { AppContext } from '../../services/context/ContextProvider';
 import { RootTypeBlock } from './Documentation/rootTypeBlock';
 import { AllTypes } from './Documentation/allTypes';
 import { Paper } from '@mui/material';

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppContext } from '../../../services/context/contextProvider';
+import { AppContext } from '../../../services/context/ContextProvider';
 import { GQLType } from '../../../types/interface';
 import { ExpandObject } from './expandObject';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';

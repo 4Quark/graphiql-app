@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/contextProvider';
+import { AppContext } from '../context/ContextProvider';
 import { Grid, Typography } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
@@ -12,7 +12,7 @@ import LinkAsButton from '../../components/LinkAsButton';
 import { toast } from 'react-toastify';
 
 const SignIn = () => {
-  const { login, lang } = useContext(AppContext);
+  const { login } = useContext(AppContext);
   const navigate = useNavigate();
 
   const onSignIn: SubmitHandler<IForm> = (data) => {
@@ -28,9 +28,9 @@ const SignIn = () => {
 
   return (
     <div>
-      <AuthForm title={useLanguage('button_signin', lang)} onSubmit={onSignIn} />
+      <AuthForm title={useLanguage('button_signin')} onSubmit={onSignIn} />
       <Grid container className="text-center items-center py-10 gap-10">
-        <Typography>{useLanguage('auth_guest_question', lang)}</Typography>
+        <Typography>{useLanguage('auth_guest_question')}</Typography>
         <LinkAsButton title="button_signup" link="/signup" />
       </Grid>
     </div>

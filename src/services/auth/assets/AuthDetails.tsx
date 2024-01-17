@@ -2,14 +2,14 @@ import { signOut } from 'firebase/auth';
 import { useContext, useEffect } from 'react';
 import { auth } from '../firebase';
 import { Button } from '@mui/material';
-import { AppContext } from '../../context/contextProvider';
+import { AppContext } from '../../context/ContextProvider';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../localization/useLanguage';
 import { toast } from 'react-toastify';
 
 const AuthDetails = () => {
   const navigate = useNavigate();
-  const { user, logout, lang } = useContext(AppContext);
+  const { user, logout } = useContext(AppContext);
 
   useEffect(() => {
     if (!user) {
@@ -46,7 +46,7 @@ const AuthDetails = () => {
         variant="outlined"
         disabled={!user?.email}
       >
-        {useLanguage('button_logout', lang)}
+        {useLanguage('button_logout')}
       </Button>
     </>
   );

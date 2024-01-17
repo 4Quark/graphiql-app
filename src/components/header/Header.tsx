@@ -1,13 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import LanguageToggler from '../langToggler/LangToggler';
 import AuthDetails from '../../services/auth/assets/AuthDetails';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../../services/localization/useLanguage';
-import { AppContext } from '../../services/context/contextProvider';
 
 const Header = () => {
-  const { lang } = useContext(AppContext);
-
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,7 +26,7 @@ const Header = () => {
       }`}
     >
       <div className="flex flex-col items-center px-10 h-max p-2 gap-y-1 sm:flex-row sm:h-14">
-        <NavLink to="/">{useLanguage('nav_welcome', lang)}</NavLink>
+        <NavLink to="/">{useLanguage('nav_welcome')}</NavLink>
         <LanguageToggler />
         <AuthDetails />
       </div>

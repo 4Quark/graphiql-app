@@ -1,18 +1,15 @@
 import { Typography } from '@mui/material';
-import { useContext } from 'react';
-import { AppContext } from '../../services/context/contextProvider';
 import { useLanguage } from '../../services/localization/useLanguage';
 
 const ErrBoundContent = () => {
-  const { lang } = useContext(AppContext);
   const errContent = [
     {
       type: 'h3',
-      text: useLanguage('EB_title', lang),
+      text: useLanguage('EB_title'),
     },
     {
       variant: 'subtitle1',
-      text: useLanguage('EB_subtitle', lang),
+      text: useLanguage('EB_subtitle'),
     },
   ];
 
