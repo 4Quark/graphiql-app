@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
-import { AppContext } from '../../context/ContextProvider';
+import { AppContext } from '../../services/context/contextProvider';
 import { Typography } from '@mui/material';
 import { AntSwitch } from './AntSwitch';
 

@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
-import LinkAsButton from '../components/LinkAsButton/LinkAsButton';
-import { AppContext } from '../context/ContextProvider';
+import LinkAsButton from '../components/LinkAsButton';
+import { AppContext } from '../services/context/contextProvider';
 import WelcomeContent from '../components/WelcomeContent/WelcomeContent';
 import { toast } from 'react-toastify';
 

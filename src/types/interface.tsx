@@ -1,7 +1,7 @@
 import { User } from 'firebase/auth';
 import { ReactNode } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import { dictionary } from '../localization/useLanguage';
+import { dictionary } from '../services/localization/useLanguage';
 import { To } from 'react-router-dom';
 
 export enum LANG {

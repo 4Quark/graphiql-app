@@ -3,9 +3,9 @@ import Description from './assets/Description';
 import DeveloperCard from './assets/DeveloperCard';
 import graphqllogo from '../../assets/graphql-logo.png';
 import reactlogo from '../../assets/react-logo.png';
-import { useLanguage } from '../../localization/useLanguage';
+import { useLanguage } from '../../services/localization/useLanguage';
 import { useContext } from 'react';
-import { AppContext } from '../../context/ContextProvider';
+import { AppContext } from '../../services/context/contextProvider';
 import { Typography } from '@mui/material';
 
 const WelcomeContent = () => {

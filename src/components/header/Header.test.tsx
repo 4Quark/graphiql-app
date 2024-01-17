@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { App } from '../../pages/App';
+import { App } from '../../App';
 
 test('Header updates language when toggler is clicked', () => {
   const routes = [

@@ -1,10 +1,10 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import { BsGithub, BsEnvelopeFill, BsLinkedin } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { getDeveloperData, useLanguage } from '../../../localization/useLanguage';
+import { getDeveloperData, useLanguage } from '../../../services/localization/useLanguage';
 import { IDeveloperProps } from '../../../types/interface';
 import { useContext } from 'react';
-import { AppContext } from '../../../context/ContextProvider';
+import { AppContext } from '../../../services/context/contextProvider';
 
 const DeveloperCard = ({ title }: IDeveloperProps) => {
   const { lang } = useContext(AppContext);

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AppContext } from '../context/ContextProvider';
-import { useLanguage } from '../localization/useLanguage';
+import { AppContext } from '../services/context/contextProvider';
+import { useLanguage } from '../services/localization/useLanguage';
 
 const NotFoundPage = () => {
   const { lang } = useContext(AppContext);

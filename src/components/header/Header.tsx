@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import LanguageToggler from '../langToggler/LangToggler';
-import AuthDetails from '../auth/assets/AuthDetails';
+import AuthDetails from '../../services/auth/assets/AuthDetails';
 import { useContext, useEffect, useState } from 'react';
-import { useLanguage } from '../../localization/useLanguage';
-import { AppContext } from '../../context/ContextProvider';
+import { useLanguage } from '../../services/localization/useLanguage';
+import { AppContext } from '../../services/context/contextProvider';
 
 const Header = () => {
   const { lang } = useContext(AppContext);

@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import ghlogo from '../../assets/github-mark-white.png';
 import { Typography } from '@mui/material';
 import { useContext } from 'react';
-import { AppContext } from '../../context/ContextProvider';
-import { getDeveloperData, useLanguage } from '../../localization/useLanguage';
+import { AppContext } from '../../services/context/contextProvider';
+import { getDeveloperData, useLanguage } from '../../services/localization/useLanguage';
 import { IDeveloperProps } from '../../types/interface';
 
 const Developer = ({ title }: IDeveloperProps) => {
