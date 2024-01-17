@@ -9,7 +9,7 @@ import { backgroundColor } from './main/Main.types';
 import { useContext, useState } from 'react';
 import { TabPanel } from './main/utils';
 import { Documentation } from './main/Documentation';
-import { AppContext } from '../services/context/ContextProvider';
+import { AppContext } from '../services/context/AppContextProvider';
 import { dictionary } from '../services/localization/useLanguage';
 
 const Main = () => {

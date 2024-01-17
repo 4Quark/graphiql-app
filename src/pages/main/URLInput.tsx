@@ -5,7 +5,7 @@ import { GraphiQLService } from '../../services/GraphiQLService';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { dictionary } from '../../services/localization/useLanguage';
-import { AppContext } from '../../services/context/ContextProvider';
+import { AppContext } from '../../services/context/AppContextProvider';
 
 export const URLInput = function () {
   const { register, setValue, handleSubmit } = useForm();

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { DictionaryKey, TDevName, TDeveloper } from '../../types/interface';
-import { AppContext } from '../context/ContextProvider';
+import { AppContext } from '../context/AppContextProvider';
 
 export const dictionary = {
   nav_welcome: {

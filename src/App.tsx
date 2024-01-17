@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
-import AppContextProvider from './services/context/ContextProvider';
+import AppContextProvider from './services/context/AppContextProvider';
 import { ToastContainer } from 'react-toastify';
 
 export const App = () => {

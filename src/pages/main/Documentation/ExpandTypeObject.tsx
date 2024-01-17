@@ -1,7 +1,7 @@
 import { Tooltip } from '@mui/material';
 import { GQLArgument, GQLField } from '../../../types/interface';
 
-export const ExpandObject = function ({ name, fields }: { name: string; fields: GQLField[] }) {
+export const ExpandTypeObject = function ({ name, fields }: { name: string; fields: GQLField[] }) {
   return (
     <div>
       type: <b className="text-amber-700">{name}</b> {'{'}

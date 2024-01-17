@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
-import { AppContext } from '../../services/context/ContextProvider';
+import { AppContext } from '../../services/context/AppContextProvider';
 import { Typography } from '@mui/material';
 import { AntSwitch } from './AntSwitch';
 
-export default function LanguageToggler() {
+export default function LangToggler() {
   const { toggleLang } = useContext(AppContext);
 
   return (

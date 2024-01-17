@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { useContext } from 'react';
-import { AppContext } from '../context/ContextProvider';
+import { AppContext } from '../context/AppContextProvider';
 
 export const ProtectedGuestRoute = () => {
   const { user } = useContext(AppContext);

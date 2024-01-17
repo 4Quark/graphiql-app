@@ -6,7 +6,7 @@ import { IAuthFormProps, IForm } from '../../../types/interface';
 import { Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getSchema } from './schema';
-import { AppContext } from '../../context/ContextProvider';
+import { AppContext } from '../../context/AppContextProvider';
 import { dictionary } from '../../localization/useLanguage';
 
 const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {

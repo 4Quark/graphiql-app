@@ -1,7 +1,7 @@
 import rsslogo from '../../assets/rsslogo.png';
 import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import Developer from '../Developer/Developer';
+import DeveloperLink from '../developerLink/DeveloperLink';
 import { DEV_NAMES } from '../../types/interface';
 
 const Footer = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
       <Grid item xs={4}>
         <Grid container spacing={2} direction="column" className="items-center">
           {developers.map((name) => (
-            <Developer title={name} key={name} />
+            <DeveloperLink title={name} key={name} />
           ))}
         </Grid>
       </Grid>

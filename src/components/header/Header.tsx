@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import LanguageToggler from '../langToggler/LangToggler';
+import LangToggler from '../langToggler/LangToggler';
 import AuthDetails from '../../services/auth/assets/AuthDetails';
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../../services/localization/useLanguage';
@@ -27,7 +27,7 @@ const Header = () => {
     >
       <div className="flex flex-col items-center px-10 h-max p-2 gap-y-1 sm:flex-row sm:h-14">
         <NavLink to="/">{useLanguage('nav_welcome')}</NavLink>
-        <LanguageToggler />
+        <LangToggler />
         <AuthDetails />
       </div>
     </header>

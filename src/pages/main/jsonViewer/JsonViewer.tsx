@@ -4,7 +4,7 @@ import { EditorView } from '@codemirror/view';
 import { json } from '@codemirror/lang-json';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { useContext } from 'react';
-import { AppContext } from '../../../services/context/ContextProvider';
+import { AppContext } from '../../../services/context/AppContextProvider';
 import { lintGutter } from '@codemirror/lint';
 
 export const JSONViewer: React.FC = () => {

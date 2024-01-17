@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import LinkAsButton from '../components/LinkAsButton';
-import { AppContext } from '../services/context/ContextProvider';
-import WelcomeContent from '../components/WelcomeContent/WelcomeContent';
+import { AppContext } from '../services/context/AppContextProvider';
+import WelcomeContent from '../components/welcomeContent/WelcomeContent';
 import { toast } from 'react-toastify';
 
 const Welcome = () => {

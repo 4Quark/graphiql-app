@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { AppContext } from '../../../services/context/ContextProvider';
+import { AppContext } from '../../../services/context/AppContextProvider';
 import { GQLType } from '../../../types/interface';
-import { ExpandObject } from './expandObject';
+import { ExpandTypeObject } from './ExpandTypeObject';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 
-export const AllTypes = function () {
+export const AllTypesBlock = function () {
   const { schema } = useContext(AppContext);
   const typenameFilter = (type: GQLType) => !/^__/.test(type.name);
   const noRootFilter = (type: GQLType) => {
@@ -28,8 +28,10 @@ export const AllTypes = function () {
               <AccordionDetails>
                 <Typography component={'div'}>
                   {type.description && <i>{type.description}</i>}
-                  {type.fields && <ExpandObject name={type.name} fields={type.fields} />}
-                  {type.inputFields && <ExpandObject name={type.name} fields={type.inputFields} />}
+                  {type.fields && <ExpandTypeObject name={type.name} fields={type.fields} />}
+                  {type.inputFields && (
+                    <ExpandTypeObject name={type.name} fields={type.inputFields} />
+                  )}
                   {type.enumValues && (
                     <div>
                       <i className="text-sm">Enum Values:</i>

@@ -2,7 +2,7 @@ import React from 'react';
 import ErrorBoundaryProps, { ErrorBoundaryState } from './ErrorBoundary.types';
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined';
 import { Button } from '@mui/material';
-import ErrBoundContent from './ErrBoundContent';
+import ErrBoundContent from './ErrorBoundContent';
 
 export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {

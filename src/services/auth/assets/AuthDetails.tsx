@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import { useContext, useEffect } from 'react';
 import { auth } from '../firebase';
 import { Button } from '@mui/material';
-import { AppContext } from '../../context/ContextProvider';
+import { AppContext } from '../../context/AppContextProvider';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../localization/useLanguage';
 import { toast } from 'react-toastify';

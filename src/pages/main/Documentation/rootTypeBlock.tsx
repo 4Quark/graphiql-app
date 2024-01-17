@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { AppContext } from '../../../services/context/ContextProvider';
-import { ExpandObject } from './expandObject';
+import { AppContext } from '../../../services/context/AppContextProvider';
+import { ExpandTypeObject } from './ExpandTypeObject';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 
 export const RootTypeBlock = function ({
@@ -22,7 +22,7 @@ export const RootTypeBlock = function ({
         </AccordionSummary>
         <AccordionDetails>
           <Typography component={'div'}>
-            {typesArray && <ExpandObject name={rootTypeName} fields={typesArray} />}
+            {typesArray && <ExpandTypeObject name={rootTypeName} fields={typesArray} />}
           </Typography>
         </AccordionDetails>
       </Accordion>

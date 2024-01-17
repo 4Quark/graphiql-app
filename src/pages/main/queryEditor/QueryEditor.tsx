@@ -10,7 +10,7 @@ import { oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
 import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { prettifyQuery } from './QueryEditor.utils';
 import { GraphiQLService } from '../../../services/GraphiQLService';
-import { AppContext } from '../../../services/context/ContextProvider';
+import { AppContext } from '../../../services/context/AppContextProvider';
 import { toast } from 'react-toastify';
 import { dictionary } from '../../../services/localization/useLanguage';
 

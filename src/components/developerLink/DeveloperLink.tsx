@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 import { getDeveloperData, useLanguage } from '../../services/localization/useLanguage';
 import { IDeveloperProps } from '../../types/interface';
 
-const Developer = ({ title }: IDeveloperProps) => {
+const DeveloperLink = ({ title }: IDeveloperProps) => {
   const name = useLanguage(title);
   const github = getDeveloperData(title).github;
 
@@ -18,4 +18,4 @@ const Developer = ({ title }: IDeveloperProps) => {
   );
 };
 
-export default Developer;
+export default DeveloperLink;

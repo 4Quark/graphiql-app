@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { AppContext } from '../../services/context/ContextProvider';
-import { RootTypeBlock } from './Documentation/rootTypeBlock';
-import { AllTypes } from './Documentation/allTypes';
+import { AppContext } from '../../services/context/AppContextProvider';
+import { RootTypeBlock } from './documentation/RootTypeBlock';
+import { AllTypesBlock } from './documentation/AllTypesBlock';
 import { Paper } from '@mui/material';
 import { dictionary } from '../../services/localization/useLanguage';
 
@@ -26,7 +26,7 @@ export const Documentation = function () {
         )}
 
         <h3 className="text-lg font-semibold py-3">{dictionary.allTypes[lang]}</h3>
-        <AllTypes />
+        <AllTypesBlock />
       </Paper>
     );
   }
