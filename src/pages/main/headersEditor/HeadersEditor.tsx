@@ -4,7 +4,7 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { lintGutter } from '@codemirror/lint';
 import { useContext } from 'react';
 import { AppContext } from '../../../services/context/AppContextProvider';
-import { dictionary } from '../../../services/localization/useLanguage';
+import { dictionary } from '../../../services/localization/dictionary';
 
 const HeadersEditor: React.FC = () => {
   const { headersValue, setHeadersValue, lang } = useContext(AppContext);

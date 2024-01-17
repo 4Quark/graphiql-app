@@ -1,13 +1,9 @@
 import { createContext, useEffect, useState } from 'react';
-import {
-  GQLSchema,
-  IAppContext,
-  IAppContextProviderProps,
-  LANG,
-  LangType,
-} from '../../types/interface';
+import { LANG, LangType } from '../../types/interface';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../auth/firebase';
+import { IAppContext, IAppContextProviderProps } from './context.types';
+import { GQLSchema } from '../../pages/main/documentation/documentation.types';
 
 export const defaultValue: IAppContext = {
   user: null,

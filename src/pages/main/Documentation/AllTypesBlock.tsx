@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { AppContext } from '../../../services/context/AppContextProvider';
-import { GQLType } from '../../../types/interface';
 import { ExpandTypeObject } from './ExpandTypeObject';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import { GQLType } from './documentation.types';
 
 export const AllTypesBlock = function () {
   const { schema } = useContext(AppContext);
@@ -20,7 +20,7 @@ export const AllTypesBlock = function () {
         {schema.types
           .filter(typenameFilter)
           .filter(noRootFilter)
-          .map((type, iterator) => (
+          .map((type: GQLType, iterator: number) => (
             <Accordion key={iterator}>
               <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
                 <Typography className="text-amber-700">{type.name}</Typography>

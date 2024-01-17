@@ -12,7 +12,7 @@ import { prettifyQuery } from './QueryEditor.utils';
 import { GraphiQLService } from '../../../services/GraphiQLService';
 import { AppContext } from '../../../services/context/AppContextProvider';
 import { toast } from 'react-toastify';
-import { dictionary } from '../../../services/localization/useLanguage';
+import { dictionary } from '../../../services/localization/dictionary';
 
 const QueryEditor: React.FC = () => {
   const initialText: string = `# Welcome to GraphiQL

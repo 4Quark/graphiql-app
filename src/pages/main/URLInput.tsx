@@ -4,8 +4,8 @@ import { Form } from 'react-router-dom';
 import { GraphiQLService } from '../../services/GraphiQLService';
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
-import { dictionary } from '../../services/localization/useLanguage';
 import { AppContext } from '../../services/context/AppContextProvider';
+import { dictionary } from '../../services/localization/dictionary';
 
 export const URLInput = function () {
   const { register, setValue, handleSubmit } = useForm();

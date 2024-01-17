@@ -4,7 +4,8 @@ import { okaidia } from '@uiw/codemirror-theme-okaidia';
 import { json } from '@codemirror/lang-json';
 import { lintGutter } from '@codemirror/lint';
 import { AppContext } from '../../../services/context/AppContextProvider';
-import { dictionary } from '../../../services/localization/useLanguage';
+import { dictionary } from '../../../services/localization/dictionary';
+
 const VariablesEditor: React.FC = () => {
   const { variablesValue, setVariablesValue, lang } = useContext(AppContext);
 

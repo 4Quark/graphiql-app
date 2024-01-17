@@ -7,7 +7,7 @@ import { Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { getSchema } from './schema';
 import { AppContext } from '../../context/AppContextProvider';
-import { dictionary } from '../../localization/useLanguage';
+import { dictionary } from '../../localization/dictionary';
 
 const AuthForm: React.FC<IAuthFormProps> = ({ title, onSubmit }) => {
   const { lang } = useContext(AppContext);

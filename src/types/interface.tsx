@@ -1,8 +1,6 @@
-import { User } from 'firebase/auth';
-import { ReactNode } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import { dictionary } from '../services/localization/useLanguage';
 import { To } from 'react-router-dom';
+import { dictionary } from '../services/localization/dictionary';
 
 export enum LANG {
   en = 'en',
@@ -11,9 +9,9 @@ export enum LANG {
 
 export type LangType = keyof typeof LANG;
 
-export type DevData = 'github' | 'linkedin' | 'email';
-
 export type DictionaryKey = keyof typeof dictionary;
+
+export type DevData = 'github' | 'linkedin' | 'email';
 
 export type TDeveloper = {
   ru: string;
@@ -23,45 +21,16 @@ export type TDeveloper = {
   email: string | To;
 };
 
+export interface IDeveloperProps {
+  title: TDevName;
+}
+
 export enum DEV_NAMES {
   MARIA = 'developerMaria',
   ANTON = 'developerAnton',
   IRYNA = 'developerIryna',
 }
 export type TDevName = DEV_NAMES;
-
-export interface ToggleVisibilityProps {
-  visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export interface IAppContext {
-  user: User | null;
-  login: (user: User) => void;
-  logout: () => void;
-  lang: LangType;
-  toggleLang: () => void;
-  queryResult: string;
-  setQueryResult: (value: string) => void;
-  variablesValue: string;
-  setVariablesValue: (value: string) => void;
-  headersValue: string;
-  setHeadersValue: (value: string) => void;
-  isDocumentationShow: boolean;
-  setIsDocumentationShow: (value: boolean) => void;
-  schema: GQLSchema | null;
-  setSchema: (value: GQLSchema | null) => void;
-}
-
-export interface IAppContextProviderProps {
-  children: ReactNode;
-}
-
-export interface IProtectedRouteProps {
-  user: boolean;
-  redirectPath: string;
-  children: ReactNode;
-}
 
 export interface IForm {
   email: string;
@@ -71,79 +40,4 @@ export interface IForm {
 export interface IAuthFormProps {
   title: string;
   onSubmit: SubmitHandler<IForm>;
-}
-
-export interface ILinkAsButtonProps {
-  title: DictionaryKey;
-  link: string;
-}
-
-export interface IDeveloperProps {
-  title: TDevName;
-}
-
-export interface IDescriptionProps {
-  title: string;
-  subheader: string;
-  paragraphs: string[];
-  linkTitle: string;
-  linkTo: string;
-  logo: string;
-}
-
-export type GQLArgument = {
-  name: string;
-  description?: string;
-  defaultValue?: string;
-  type?: GQLFieldType;
-};
-
-export type GQLField = {
-  name: string;
-  description?: string;
-  args?: GQLArgument[];
-  type?: GQLFieldType;
-};
-
-export type GQLInputField = {
-  name: string;
-  description?: string;
-  type?: GQLFieldType;
-  defaultValue?: object;
-};
-
-export type GQLFieldType = {
-  name: string;
-  kind: string;
-  ofType?: GQLFieldType;
-};
-
-export type GQLEnum = {
-  name: string;
-  description: string;
-  isDeprecated: boolean;
-  deprecationReason?: string;
-};
-
-export type GQLType = {
-  kind: string;
-  name: string;
-  description?: string;
-  fields?: GQLField[];
-  inputFields?: GQLInputField[];
-  enumValues?: GQLEnum[];
-};
-
-export type GQLDirective = {
-  name: string;
-  description: string;
-  locations: string[];
-};
-
-export interface GQLSchema {
-  queryType: { name: string } | null;
-  mutationType: { name: string } | null;
-  subscriptionType: { name: string } | null;
-  types: GQLType[];
-  directives: object[];
 }

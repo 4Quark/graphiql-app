@@ -2,7 +2,12 @@ import { Button } from '@mui/material';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../services/localization/useLanguage';
-import { ILinkAsButtonProps } from '../types/interface';
+import { DictionaryKey } from '../types/interface';
+
+interface ILinkAsButtonProps {
+  title: DictionaryKey;
+  link: string;
+}
 
 const LinkAsButton = ({ link, title }: ILinkAsButtonProps) => {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import { act, fireEvent, screen, waitFor, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { App } from '../../pages/App';
 import SignUp from './SignUp';
+import { App } from '../../App';
 
 test('form validates wrong e-mail format', async () => {
   const routes = [

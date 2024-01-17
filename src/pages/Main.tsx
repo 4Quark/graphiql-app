@@ -10,7 +10,7 @@ import { useContext, useState } from 'react';
 import { TabPanel } from './main/utils';
 import { Documentation } from './main/Documentation';
 import { AppContext } from '../services/context/AppContextProvider';
-import { dictionary } from '../services/localization/useLanguage';
+import { dictionary } from '../services/localization/dictionary';
 
 const Main = () => {
   const [tabValue, setTabValue] = useState(0);

@@ -3,9 +3,8 @@ import { useLanguage } from './useLanguage';
 describe('useLanguage', () => {
   test('returns the correct english translation', () => {
     const key = 'nav_welcome';
-    const lang = 'en';
 
-    const result = useLanguage(key, lang);
+    const result = useLanguage(key);
 
     const expectedTranslation = 'Home';
     expect(result).toEqual(expectedTranslation);
@@ -13,9 +12,8 @@ describe('useLanguage', () => {
 
   test('returns the correct russian translation', () => {
     const key = 'nav_welcome';
-    const lang = 'ru';
 
-    const result = useLanguage(key, lang);
+    const result = useLanguage(key);
 
     const expectedTranslation = 'Домашняя';
     expect(result).toEqual(expectedTranslation);

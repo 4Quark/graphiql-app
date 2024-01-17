@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import { Avatar, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { IDescriptionProps } from '../../../types/interface';
+
+interface IDescriptionProps {
+  title: string;
+  subheader: string;
+  paragraphs: string[];
+  linkTitle: string;
+  linkTo: string;
+  logo: string;
+}
 
 const Description = ({
   title,

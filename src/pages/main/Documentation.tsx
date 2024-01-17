@@ -3,7 +3,7 @@ import { AppContext } from '../../services/context/AppContextProvider';
 import { RootTypeBlock } from './documentation/RootTypeBlock';
 import { AllTypesBlock } from './documentation/AllTypesBlock';
 import { Paper } from '@mui/material';
-import { dictionary } from '../../services/localization/useLanguage';
+import { dictionary } from '../../services/localization/dictionary';
 
 export const Documentation = function () {
   const { schema, lang } = useContext(AppContext);

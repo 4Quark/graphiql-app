@@ -1,5 +1,5 @@
 import { Tooltip } from '@mui/material';
-import { GQLArgument, GQLField } from '../../../types/interface';
+import { GQLArgument, GQLField } from './documentation.types';
 
 export const ExpandTypeObject = function ({ name, fields }: { name: string; fields: GQLField[] }) {
   return (

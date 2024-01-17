@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { IForm, LangType } from '../../../types/interface';
 import { VALIDATION_PATTERN } from './utils/patterns';
-import { dictionary } from '../../localization/useLanguage';
+import { dictionary } from '../../localization/dictionary';
 
 export const getSchema = (lang: LangType) => {
   const schema: yup.ObjectSchema<IForm> = yup.object({
