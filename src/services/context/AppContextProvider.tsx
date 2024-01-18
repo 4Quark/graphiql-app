@@ -3,7 +3,6 @@ import { LANG, LangType } from '../../types/interface';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../auth/firebase';
 import { IAppContext, IAppContextProviderProps } from './context.types';
-import { GQLSchema } from '../../pages/main/documentation/documentation.types';
 
 export const defaultValue: IAppContext = {
   user: null,
@@ -11,16 +10,6 @@ export const defaultValue: IAppContext = {
   logout: () => {},
   lang: LANG.en,
   toggleLang: () => {},
-  queryResult: '',
-  setQueryResult: () => {},
-  variablesValue: '',
-  setVariablesValue: () => {},
-  headersValue: '',
-  setHeadersValue: () => {},
-  isDocumentationShow: false,
-  setIsDocumentationShow: () => {},
-  schema: null,
-  setSchema: () => {},
 };
 
 export const AppContext = createContext(defaultValue);
@@ -60,28 +49,12 @@ const AppContextProvider: React.FC<IAppContextProviderProps> = ({ children }) =>
     }
   };
 
-  const [queryResult, setQueryResult] = useState<string>('');
-  const [variablesValue, setVariablesValue] = useState<string>('');
-  const [headersValue, setHeadersValue] = useState<string>('');
-  const [isDocumentationShow, setIsDocumentationShow] = useState<boolean>(false);
-  const [schema, setSchema] = useState<GQLSchema | null>(null);
-
   const contextValue: IAppContext = {
     user,
     login,
     logout,
     lang,
     toggleLang,
-    queryResult,
-    setQueryResult,
-    variablesValue,
-    setVariablesValue,
-    headersValue,
-    setHeadersValue,
-    isDocumentationShow,
-    setIsDocumentationShow,
-    schema,
-    setSchema,
   };
 
   return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

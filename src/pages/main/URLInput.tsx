@@ -6,11 +6,19 @@ import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { AppContext } from '../../services/context/AppContextProvider';
 import { dictionary } from '../../services/localization/dictionary';
+import { useAppDispatch, useAppSelector } from '../../services/store/store';
+import { schemaSlice } from '../../services/store/schemaReducer';
+import { resultSlice } from '../../services/store/resultReducer';
 
 export const URLInput = function () {
   const { register, setValue, handleSubmit } = useForm();
-  const { lang, schema, isDocumentationShow, setQueryResult, setSchema, setIsDocumentationShow } =
-    useContext(AppContext);
+  const { lang } = useContext(AppContext);
+  const dispatch = useAppDispatch();
+  const { updateResult } = resultSlice.actions;
+  const schema = useAppSelector((state) => state.schema.schema);
+  const { updateSchema } = schemaSlice.actions;
+  const isDocumentationShow = useAppSelector((state) => state.schema.isDocumentationShow);
+  const { updateIsDocumentationShow } = schemaSlice.actions;
 
   const cleanInput = () => setValue('url', '');
 
@@ -22,12 +30,12 @@ export const URLInput = function () {
     try {
       GraphiQLService.updateURL(data.url);
       const response = await GraphiQLService.runSchemaRequest();
-      setSchema(response.data.__schema);
-      setQueryResult('');
+      dispatch(updateSchema(response.data.__schema));
+      dispatch(updateResult(''));
     } catch {
-      setSchema(null);
-      setQueryResult('');
-      setIsDocumentationShow(false);
+      dispatch(updateSchema(null));
+      dispatch(updateResult(''));
+      dispatch(updateIsDocumentationShow(false));
       GraphiQLService.updateURL('no URL');
       toast.warn(dictionary.toastWrongURL[lang], { position: 'top-right' });
     }
@@ -52,7 +60,7 @@ export const URLInput = function () {
         <Button
           variant="outlined"
           disabled={!schema}
-          onClick={() => setIsDocumentationShow(!isDocumentationShow)}
+          onClick={() => dispatch(updateIsDocumentationShow(!isDocumentationShow))}
         >
           {dictionary.documentation[lang]}
         </Button>

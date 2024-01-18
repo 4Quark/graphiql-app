@@ -13,6 +13,8 @@ import { GraphiQLService } from '../../../services/GraphiQLService';
 import { AppContext } from '../../../services/context/AppContextProvider';
 import { toast } from 'react-toastify';
 import { dictionary } from '../../../services/localization/dictionary';
+import { useAppDispatch, useAppSelector } from '../../../services/store/store';
+import { resultSlice } from '../../../services/store/resultReducer';
 
 const QueryEditor: React.FC = () => {
   const initialText: string = `# Welcome to GraphiQL
@@ -21,7 +23,11 @@ const QueryEditor: React.FC = () => {
   # validating and testing GraphQL queries.
   `;
   const [query, setQuery] = useState(initialText);
-  const { headersValue, setQueryResult, variablesValue, lang } = useContext(AppContext);
+  const { lang } = useContext(AppContext);
+  const dispatch = useAppDispatch();
+  const headers = useAppSelector((state) => state.request.requestHeaders);
+  const variables = useAppSelector((state) => state.request.requestVariables);
+  const { updateResult } = resultSlice.actions;
 
   const handlePrettifyClick = () => {
     const prettyQuery = prettifyQuery(query);
@@ -31,8 +37,8 @@ const QueryEditor: React.FC = () => {
   const buildHeaders = () => {
     const myHeaders: HeadersInit = new Headers();
     myHeaders.append('Content-Type', 'application/json');
-    if (headersValue !== '') {
-      const headersString: string = headersValue;
+    if (headers !== '') {
+      const headersString: string = headers;
       const headersArray = headersString.split('\n');
       headersArray.map((header) => {
         const regex = /([^:]+):(.+)/;
@@ -48,17 +54,17 @@ const QueryEditor: React.FC = () => {
   };
 
   const handleRunQuery = async () => {
-    const variables = variablesValue !== '' ? JSON.parse(variablesValue) : null;
+    const variablesQuery = variables !== '' ? JSON.parse(variables) : null;
     if (GraphiQLService.baseURL === 'no URL') {
       toast.error(dictionary.toastEmptyQuery[lang], { position: 'top-right' });
       return;
     }
     try {
-      const response = await GraphiQLService.runQuery(query, variables, buildHeaders());
+      const response = await GraphiQLService.runQuery(query, variablesQuery, buildHeaders());
       const data = JSON.stringify(response);
-      setQueryResult(prettifyQuery(data));
+      dispatch(updateResult(prettifyQuery(data)));
     } catch {
-      setQueryResult('');
+      dispatch(updateResult(''));
       toast.warn(dictionary.toastWrongQuery[lang], { position: 'top-right' });
     }
   };

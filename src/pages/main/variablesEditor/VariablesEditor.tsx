@@ -5,9 +5,14 @@ import { json } from '@codemirror/lang-json';
 import { lintGutter } from '@codemirror/lint';
 import { AppContext } from '../../../services/context/AppContextProvider';
 import { dictionary } from '../../../services/localization/dictionary';
+import { useAppDispatch, useAppSelector } from '../../../services/store/store';
+import { requestSlice } from '../../../services/store/requestReducer';
 
 const VariablesEditor: React.FC = () => {
-  const { variablesValue, setVariablesValue, lang } = useContext(AppContext);
+  const { lang } = useContext(AppContext);
+  const dispatch = useAppDispatch();
+  const variables = useAppSelector((state) => state.request.requestVariables);
+  const { updateRequestVariables } = requestSlice.actions;
 
   return (
     <CodeMirror
@@ -15,8 +20,8 @@ const VariablesEditor: React.FC = () => {
       theme={okaidia}
       extensions={[json(), lintGutter()]}
       placeholder={dictionary.typeVariablesHere[lang]}
-      value={variablesValue}
-      onChange={(value) => setVariablesValue(value)}
+      value={variables}
+      onChange={(value) => dispatch(updateRequestVariables(value))}
     />
   );
 };

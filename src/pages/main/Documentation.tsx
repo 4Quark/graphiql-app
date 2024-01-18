@@ -4,9 +4,11 @@ import { RootTypeBlock } from './documentation/RootTypeBlock';
 import { AllTypesBlock } from './documentation/AllTypesBlock';
 import { Paper } from '@mui/material';
 import { dictionary } from '../../services/localization/dictionary';
+import { useAppSelector } from '../../services/store/store';
 
 export const Documentation = function () {
-  const { schema, lang } = useContext(AppContext);
+  const { lang } = useContext(AppContext);
+  const schema = useAppSelector((state) => state.schema.schema);
 
   if (schema) {
     return (

@@ -11,11 +11,14 @@ import { TabPanel } from './main/utils';
 import { Documentation } from './main/Documentation';
 import { AppContext } from '../services/context/AppContextProvider';
 import { dictionary } from '../services/localization/dictionary';
+import { useAppSelector } from '../services/store/store';
 
 const Main = () => {
   const [tabValue, setTabValue] = useState(0);
   const [showEditors, setShowEditors] = useState(true);
-  const { schema, isDocumentationShow, lang } = useContext(AppContext);
+  const { lang } = useContext(AppContext);
+  const schema = useAppSelector((state) => state.schema.schema);
+  const isDocumentationShow = useAppSelector((state) => state.schema.isDocumentationShow);
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number): void => {
     setTabValue(newValue);

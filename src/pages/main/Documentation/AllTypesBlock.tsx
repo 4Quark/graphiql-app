@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import { AppContext } from '../../../services/context/AppContextProvider';
 import { ExpandTypeObject } from './ExpandTypeObject';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import { GQLType } from './documentation.types';
+import { useAppSelector } from '../../../services/store/store';
 
 export const AllTypesBlock = function () {
-  const { schema } = useContext(AppContext);
+  const schema = useAppSelector((state) => state.schema.schema);
   const typenameFilter = (type: GQLType) => !/^__/.test(type.name);
   const noRootFilter = (type: GQLType) => {
     return (

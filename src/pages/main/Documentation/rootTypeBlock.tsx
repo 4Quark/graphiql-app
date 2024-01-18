@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { AppContext } from '../../../services/context/AppContextProvider';
 import { ExpandTypeObject } from './ExpandTypeObject';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import { GQLType } from './documentation.types';
+import { useAppSelector } from '../../../services/store/store';
 
 export const RootTypeBlock = function ({
   rootType,
@@ -11,7 +10,7 @@ export const RootTypeBlock = function ({
   rootType: 'query' | 'mutation' | 'subscription';
   rootTypeName: string;
 }) {
-  const { schema } = useContext(AppContext);
+  const schema = useAppSelector((state) => state.schema.schema);
   if (schema) {
     const typesArray = schema.types.filter((type: GQLType) => type.name === rootTypeName)[0]
       ?.fields;
