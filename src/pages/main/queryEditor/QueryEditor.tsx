@@ -69,6 +69,12 @@ const QueryEditor: React.FC = () => {
     }
   };
 
+  const handleQuery = () => {
+    handleRunQuery().catch((error) => {
+      toast.error(error.message ?? 'An error occurred', { position: 'top-right' });
+    });
+  };
+
   return (
     <Paper>
       <div className="bg-zinc-700">
@@ -78,7 +84,7 @@ const QueryEditor: React.FC = () => {
             color="primary"
             size="small"
             variant="outlined"
-            onClick={handleRunQuery}
+            onClick={handleQuery}
             startIcon={<PlayCircleOutlineOutlinedIcon />}
           >
             {dictionary.runQuery[lang]}
